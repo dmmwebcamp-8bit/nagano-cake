@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8 mx-auto">
+
+      <div class="ml-2">
+        <h5 class="font-weight-bold"><span class="font-weight-bold bg-light px-4">ログイン</span></h5>
+      </div>
+      
+        <!--ログイン-->
+      <div class="col-10">
+        
+        <div class="ml-3">
+          <h6 class="font-weight-bold"><span class="font-weight-bold bg-light px-4">会員の方はこちらからログイン</span></h6>
+        </div>
+
+        <div class="ml-5">
+          <%= form_with model: @customer, url: new_customer_session_path do |f| %>
+            <div class="form-group ml-5">
+              <table class="table table-borderless">
+                  <td>メールアドレス</td>
+                  <td><%= f.email_field :email, placeholder: "sample@example.com", class: "form-control" %></td>
+                </tr>
+                <tr>
+                  <td>パスワード(6文字以上)</td>
+                  <td><%= f.password_field :password, autocomplete: "new-password", class: "form-control" %></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td><%= f.submit "ログイン", class: "btn  btn-primary font-weight-bold px-5" %></td>
+                </tr>
+              </table>
+            </div>
+          <% end %>
+        </div>
+
+        <!--新規登録リンク-->
+        <div class="ml-3">
+          <h6 class="font-weight-bold"><span class="font-weight-bold bg-light px-4">会員登録がお済でない方</span></h6>
+        </div>
+        <div class="pl-5"><%= link_to "こちら", new_customer_registration_path %> から新規登録を行ってください。</div>
+          
+      </div>
+      
+    </div>
+  </div>
+</div>
