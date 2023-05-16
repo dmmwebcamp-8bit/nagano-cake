@@ -14,18 +14,18 @@
           <ul class="navbar-nav ml-5">
             <% if customer_signed_in? %>
               <!--Customer ログイン後header-->
-              <span class="navbar-text mr-4">ようこそ、<%= current_customer.name %>さん</span>
+              <span class="navbar-text mr-4">ようこそ、<%= current_customer.full_name %>さん</span>
               <li><%= link_to "マイページ", customers_path, class: 'nav-link' %></li>
               <li><%= link_to "商品一覧", items_path, class: 'nav-link' %></li>
               <li><%= link_to "カート", cart_items_path, class: 'nav-link' %></li>
-              <li><%= link_to "ログアウト", destroy_customer_session_path, class: 'nav-link' %></li>
-            <% elseif admin_signed_in? %>
+              <li><%= link_to "ログアウト", destroy_customer_session_path, class: 'nav-link', method: :delete %></li>
+            <% elsif admin_signed_in? %>
               <!--Admin ログイン後header-->
               <li><%= link_to "商品一覧", admin_items_path, class: 'nav-link' %></li>
               <li><%= link_to "会員一覧", admin_customers_path, class: 'nav-link' %></li>
               <li><%= link_to "注文履歴一覧", admin_path, class: 'nav-link' %></li>
               <li><%= link_to "ジャンル一覧", admin_genres_path, class: 'nav-link'%></li>
-              <li><%= link_to "ログアウト", destroy_admin_session_path, class: 'nav-link' %></li>
+              <li><%= link_to "ログアウト", destroy_admin_session_path, class: 'nav-link', method: :delete %></li>
             <% else %>
               <!--共通ログイン前 header-->
               <li><%= link_to "About", about_path, class: 'nav-link' %></li>
