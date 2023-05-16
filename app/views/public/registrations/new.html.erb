@@ -1,15 +1,13 @@
-<div class="container">
+<div class="container my-5">
   <div class="row">
     <div class="col-10 mx-auto">
 
-      <!--新規登録-->
-      <div class="ml-2">
-        <h5 class="font-weight-bold"><span class="font-weight-bold bg-light px-4">新規会員登録</span></h5>
-      </div>
+      <h5 class="font-weight-bold ml-5 mb-5"><span class="bg-light px-4">新規会員登録</span></h5>
 
+      <!--新規登録フォーム-->
       <%= form_with model: @customer, url: customer_registration_path do |f| %>
         <div class="form-group">
-          <table class="table table-borderless">
+          <table class="table table-sm table-borderless">
             <tr>
               <td>名前</td>
               <td>(姓)</td>
@@ -56,17 +54,19 @@
             </tr>
             <tr>
               <td colspan="2"></td>
-              <td><%= f.submit "新規登録", class: "btn btn-block btn-success font-weight-bold" %></td>
+              <td><%= f.submit "新規登録", class: "btn btn-block btn-success font-weight-bold my-3" %></td>
             </tr>
           </table>
         </div>
       <% end %>
 
       <!--ログインリンク-->
-      <div class="ml-2">
-        <h5 class="font-weight-bold"><span class="font-weight-bold bg-light px-4">既に登録済みの方</span></h5>
+      <div class="ml-5">
+        <h5 class="font-weight-bold mb-3"><span class="bg-light px-4">既に登録済みの方</span></h5>
+
         <div class="ml-5"><%= link_to "こちら", new_customer_session_path %> からログインしてください。</div>
       </div>
+
     </div>
   </div>
 </div>
