@@ -62,3 +62,5 @@ gem 'pry-rails'
 gem "enum_help"
 
 gem 'dotenv-rails'
+
+gem 'kaminari','~> 1.2.1'
