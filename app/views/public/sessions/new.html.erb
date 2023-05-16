@@ -2,21 +2,21 @@
   <div class="row">
     <div class="col-9 mx-auto">
 
-      <h5 class="font-weight-bold"><span class="font-weight-bold bg-light px-4">ログイン</span></h5>
+      <h5 class="font-weight-bold"><span class="bg-light px-4">ログイン</span></h5>
 
       <!--会員ログインフォーム-->
       <div class="row">
         <div class="col-11 mx-auto my-4">
-          <h6 class="font-weight-bold mb-4"><span class="font-weight-bold bg-light px-4">会員の方はこちらからログイン</span></h6>
+          <h6 class="font-weight-bold mb-4"><span class="bg-light px-4">会員の方はこちらからログイン</span></h6>
 
-          <%= form_with model: @customer, url: new_customer_session_path do |f| %>
+          <%= form_with model: @customer, url: customer_session_path do |f| %>
             <div class="form-group ml-5">
               <table class="table table-sm table-borderless">
                   <td>メールアドレス</td>
                   <td><%= f.email_field :email, placeholder: "sample@example.com", class: "form-control" %></td>
                 </tr>
                 <tr>
-                  <td>パスワード(6文字以上)</td>
+                  <td>パスワード</td>
                   <td><%= f.password_field :password, autocomplete: "new-password", class: "form-control" %></td>
                 </tr>
                 <tr>
@@ -32,7 +32,7 @@
       <!--新規登録リンク-->
       <div class="row">
         <div class="col-11 mx-auto">
-          <h6 class="font-weight-bold mb-3"><span class="font-weight-bold bg-light px-4">会員登録がお済みでない方</span></h6>
+          <h6 class="font-weight-bold mb-3"><span class="bg-light px-4">会員登録がお済みでない方</span></h6>
 
           <div class="text-center"><%= link_to "こちら", new_customer_registration_path %> から新規登録を行ってください。</div>
         </div>
