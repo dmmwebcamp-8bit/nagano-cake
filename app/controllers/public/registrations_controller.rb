@@ -72,7 +72,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   end
 
   def after_update_path_for(resource)
-    customers_path(current_customer)
+    customers_path
   end
 
   def configure_permitted_parameters

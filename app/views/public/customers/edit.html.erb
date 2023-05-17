@@ -5,7 +5,7 @@
       <h5 class="font-weight-bold ml-5 mb-5"><span class="bg-light px-4">会員情報編集</span></h5>
 
       <!--会員情報編集フォーム-->
-      <%= form_with model: @customer, url: customer_registration_path do |f| %>
+      <%= form_with model: current_customer, url: customer_registration_path do |f| %>
         <div class="form-group">
           <table class="table table-sm table-borderless">
             <tr>
@@ -49,8 +49,7 @@
           </table>
         </div>
       <% end %>
-
-
+      
     </div>
   </div>
 </div>
