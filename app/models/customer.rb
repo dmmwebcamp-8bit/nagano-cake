@@ -12,11 +12,12 @@ class Customer < ApplicationRecord
     last_name + first_name
   end
 
+  def full_name_kana
+    last_name_kana + " " + first_name_kana
+  end
+
   def full_address
     '〒' + postal_code + ' ' + address
   end
 
-  def full_name_kana
-    last_name_kana + " " + first_name_kana
-  end
 end
