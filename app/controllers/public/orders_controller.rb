@@ -4,6 +4,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
+    
   end
 
   def complete
@@ -14,13 +15,13 @@ class Public::OrdersController < ApplicationController
 
   def show
   end
-  
+
   def create
-    
+
   end
-  
+
   private
     def order_params
-      params.require(:order).permit(:payment_method, )
+      params.require(:order).permit(:payment_method, :total_cost)
     end
 end

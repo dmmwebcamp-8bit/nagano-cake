@@ -1,0 +1,46 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-9 mx-auto">
+      <div class="row align-items-center justify-content-between">
+        <h5 class="font-weight-bold"><span class="bg-light px-4">注文情報確認</span></h5>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-10">
+
+    </div>
+
+    <div class="col-2">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>送料</td>
+            <td><%= 800.to_s(:delimited) %></td>
+          </tr>
+          <tr>
+            <td>商品合計</td>
+            <td><%= 1760.to_s(:delimited) %></td>
+          </tr>
+          <tr>
+            <td>請求合計</td>
+            <td><%= 2560.to_s(:delimited) %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <table class="table table-sm table-borderless">
+      <tbody>
+        <tr>
+          <td><b>支払方法</b></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

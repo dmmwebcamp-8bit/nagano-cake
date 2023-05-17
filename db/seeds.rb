@@ -10,3 +10,54 @@ Admin.create!(
   email: ENV['ADMIN_EMAIL'],
   password: ENV['ADMIN_PASS']
 )
+
+Customer.create!(
+  [
+    {
+      email: 'yuukinishimoto1109@gmail.com',
+      password: '191d423d',
+      first_name: '有希',
+      last_name:  '西本',
+      first_name_kana: 'ユウキ',
+      last_name_kana: 'ニシモト',
+      phone_number: '00000000000',
+      postal_code: '0009999',
+      address: '滋賀県大津市におの浜1-1-1-1-1'
+    }
+  ]
+)
+
+Address.create!(
+  [
+    {
+      customer_id: 1,
+      name: 'YuukiNishimoto',
+      postal_code: '0009999',
+      address: 'adress1-1-1-1'
+    }
+  ]
+)
+
+Genre.create!(
+  [
+    {name: "ケーキ"},{name: "プリン"}
+  ]
+)
+
+item = Item.create!(
+  name: "sample1",
+  description: "this is sample1",
+  genre_id: 1,
+  price: 100
+)
+item.image.attach(io: File.open(Rails.root.join('app/assets/images/no_image.jpg')), filename: 'sample.jpg')
+
+CartItem.create!(
+  [
+    {
+      customer_id: 1,
+      item_id: 1,
+      amount: 1
+    }
+  ]
+)
