@@ -74,3 +74,37 @@ CartItem.create!(
     }
   ]
 )
+
+Order.create!(
+  [
+    {
+      customer_id: 1,
+      payment_method: 1,
+      total_cost: 2670,
+      shipping_cost: 800,
+      postal_code: "5200801",
+      address: "sigaken otusi nionohama",
+      name: "西本有希",
+      status: 0
+    }
+  ]
+)
+
+OrderDetail.create!(
+  [
+    {
+      order_id: 1,
+      item_id: 1,
+      price: 110,
+      quantity: 6,
+      making_status: 0
+    },
+    {
+      order_id: 1,
+      item_id: 2,
+      price: 1210,
+      quantity: 1,
+      making_status: 0
+    }
+  ]
+)
