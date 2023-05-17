@@ -52,11 +52,24 @@ item = Item.create!(
 )
 item.image.attach(io: File.open(Rails.root.join('app/assets/images/no_image.jpg')), filename: 'sample.jpg')
 
+item = Item.create!(
+  name: "sample2",
+  description: "this is sample2",
+  genre_id: 2,
+  price: 1100
+)
+item.image.attach(io: File.open(Rails.root.join('app/assets/images/no_image.jpg')), filename: 'sample.jpg')
+
 CartItem.create!(
   [
     {
       customer_id: 1,
       item_id: 1,
+      amount: 1
+    },
+    {
+      customer_id: 1,
+      item_id: 2,
       amount: 1
     }
   ]

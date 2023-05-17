@@ -8,4 +8,7 @@ class OrderDetail < ApplicationRecord
                         process_in_making:2,
                         finished_making:3}
 
+  def sub_total
+    price * quantity
+  end
 end
