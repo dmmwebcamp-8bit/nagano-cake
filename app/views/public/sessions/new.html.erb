@@ -12,6 +12,7 @@
           <%= form_with model: @customer, url: customer_session_path do |f| %>
             <div class="form-group ml-5">
               <table class="table table-sm table-borderless">
+                <tr>
                   <td>メールアドレス</td>
                   <td><%= f.email_field :email, placeholder: "sample@example.com", class: "form-control" %></td>
                 </tr>
