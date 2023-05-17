@@ -1,2 +1,102 @@
-<h1>Public::Orders#new</h1>
-<p>Find me in app/views/public/orders/new.html.erb</p>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-9 mx-auto">
+      <div class="row align-items-center">
+        <h5 class="font-weight-bold"><span class="bg-light px-4">注文情報入力</span></h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-11 mx-auto">
+      <%= form_with url: orders_confirm_path do |f| %>
+
+        <b>支払方法</b>
+        <div class="row">
+          <div class="form-group ml-5">
+            <table class="table table-sm table-borderless">
+              <tbody>
+                <tr>
+                  <td>
+                    <%= f.radio_button :payment_method, Order.payment_methods.key(0), class: "form-check-input" %>
+                    <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer], class: "form-check-label" %>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <%= f.radio_button :payment_method, Order.payment_methods.key(1), class: "form-check-input" %>
+                    <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card], class: "form-check-label"%>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <b>お届け先</b><br>
+        <div class="row">
+          <div class="col-11 mx-auto">
+            <div class="form-group">
+              <table class="table table-sm table-borderless">
+                <tbody>
+                  <tr>
+                    <td>
+                      <%= f.radio_button :address_option, 1, class: "form-check-input" %>
+                      <%= f.label :address_option_1, "ご自身の住所", class: "form-check-label"%>
+                    </td>
+                  </tr>
+                    <tr>
+                      <td colspan=3><%= current_customer.full_address %><br><%= current_customer.full_name %></td>
+                    </tr>
+                  <tr>
+                    <td>
+                      <%= f.radio_button :address_option, 2, class: "form-check-input" %>
+                      <%= f.label :address_option_2, "登録済住所から選択", class: "form-check-label"%>
+                    </td>
+                  </tr>
+                    <tr>
+                      <td colspan=3><%= f.select :address_id, options_from_collection_for_select(current_customer.addresses.all, :id, :address_display) %></td>
+                    </tr>
+                  <tr>
+                    <td>
+                      <%= f.radio_button :address_option, 3, class: "form-check-input" %>
+                      <%= f.label :address_option_3, "新しいお届け先", class: "form-check-label"%>
+                    </td>
+                  </tr>
+                    <tr>
+                      <td>郵便番号(ハイフンなし)</td>
+                      <td><%= f.text_field :postal_code, placeholder: "0000000", class: "form-control" %></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>住所</td>
+                      <td colspan=2><%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", class: "form-control" %></td>
+                    </tr>
+                    <tr>
+                      <td>宛名</td>
+                      <td><%= f.text_field :name, placeholder: "令和道子", class: "form-control" %></td>
+                      <td></td>
+                    </tr>
+                  <tr>
+                    <td width=200px></td>
+                    <td width=200px></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="row justify-content-center">
+          <%= f.submit "確認画面へ進む", class: "btn btn-primary"%>
+        </div>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
