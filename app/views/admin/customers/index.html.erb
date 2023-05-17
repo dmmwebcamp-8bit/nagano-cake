@@ -1,2 +1,55 @@
-<h1>Admin::Customers#index</h1>
-<p>Find me in app/views/admin/customers/index.html.erb</p>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-10">
+      
+      <!--フラッシュメッセージ-->
+      <div class="text-danger font-weight-bold mb-3">
+        <%= flash[:notice] %>
+      </div>
+
+      <h5 class="mb-5"><span class="bg-light px-4">会員一覧</span></h5>
+      
+      <!--会員一覧テーブル-->
+      <div class="row">
+        <div class="col-10 mx-auto">
+          <table class="table">
+            <thead class="bg-light">
+              <tr>
+                <th>会員ID</th>
+                <th>氏名</th>
+                <th>メールアドレス</th>
+                <th>ステータス</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @customers.each do |customer| %>
+                <tr>
+                  <td><%= customer.id %></td>
+                  <td>
+                    <%= link_to admin_customer_path(customer.id), class: "text-reset" do %>
+                      <u><%= customer.full_name %></u>
+                    <% end %>
+                  </td>
+                  <td><%= customer.email %></td>
+                  <td>
+                    <% if customer.is_deleated == false %>
+                      <p class="text-success font-weight-bold">有効</p>
+                    <% else %>
+                      <p class="text-secondary font-weight-bold">退会</p>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+    
+          <!--ページネーション-->
+          <div class="d-flex justify-content-center">
+            <%= paginate @customers %>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
