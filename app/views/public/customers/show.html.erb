@@ -7,14 +7,14 @@
       <!--編集リンク-->
       <div class="d-flex mb-3">
         <h5 class="font-weight-bold mr-5 my-auto">登録情報</h5>
-        <%= link_to "編集する", edit_customers_path, class: "btn btn-success btn-sm px-4 font-weight-bold" %>
+        <%= link_to "編集する", customers_information_edit_path, class: "btn btn-success btn-sm px-4 font-weight-bold" %>
       </div>
 
       <!--会員情報-->
       <table class="table table-bordered mb-4">
         <tr>
           <td>氏名</td>
-          <td><%= @customer.full_name %></td>
+          <td width="75%"><%= @customer.full_name %></td>
         </tr>
         <tr>
           <td>カナ</td>
