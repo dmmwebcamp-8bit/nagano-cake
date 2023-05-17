@@ -4,32 +4,34 @@
 
       <h5 class="font-weight-bold ml-5 mb-5"><span class="bg-light px-4">商品詳細</span></h5>
 
-      <div class="row">
-        <div class="col-4">
+      <div class="row mx-auto">
+        <!--商品画像-->
+        <div class="col-4 pt-3">
           <%= image_tag @item.get_image(200, 150) %>
         </div>
 
-        <div class="col-8">
-          <table class="table">
+        <!--商品詳細-->
+        <div class="col-7">
+          <table class="table table-borderless">
             <tr>
               <td>商品名</td>
-              <td><%= @item.name %></td>
+              <td class="h5"><%= @item.name %></td>
             </tr>
             <tr>
               <td>商品説明</td>
-              <td><%= @item.description %></td>
+              <td class="h5"><%= @item.description %></td>
             </tr>
             <tr>
               <td>ジャンル</td>
-              <td><%= @item.genre.name %></td>
+              <td class="h5"><%= @item.genre.name %></td>
             </tr>
             <tr>
-              <td>税込価格（税抜価格）</td>
-              <td><%= @item.with_tax_price %>（<%= @item.price %>）</td>
+              <td>税込価格<br>(税抜価格)</td>
+              <td class="h5 align-middle"><%= @item.with_tax_price %>（<%= @item.price %>）円</td>
             </tr>
             <tr>
               <td>販売ステータス</td>
-              <td>
+              <td class="h5">
                 <% if @item.is_active %>
                   <span style="color: green;">販売中</span>
                 <% else %>
@@ -38,6 +40,11 @@
               </td>
             </tr>
           </table>
+        </div>
+
+        <!--編集ページ遷移ボタン-->
+        <div class="mx-auto mt-5">
+          <%= link_to "編集する", edit_admin_item_path(@item.id), class:"btn btn-success btn-lg" %>
         </div>
       </div>
 
