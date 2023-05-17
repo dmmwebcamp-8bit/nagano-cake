@@ -1,8 +1,8 @@
-<div class="container">
+<div class="container my-5">
   <div class="row">
 
     <div class="col-7">
-      <h5 class="font-weight-bold"><span class="font-weight-bold bg-light px-4">ジャンル一覧・追加</span></h5>
+      <h5 class="font-weight-bold mb-5"><span class="bg-light px-4">ジャンル一覧・追加</span></h5>
 
       <%= form_with model: @genre, url: admin_genres_path do |f| %>
 
@@ -16,7 +16,7 @@
 
         <div class="col-9">
           <table class="table">
-            <thead class="thead-light">
+            <thead class="bg-light">
               <th class="text-center">ジャンル</th>
               <th colspan="2"></th>
             </thead>

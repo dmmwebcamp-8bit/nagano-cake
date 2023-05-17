@@ -1,2 +1,53 @@
-<h1>Admin::Items#show</h1>
-<p>Find me in app/views/admin/items/show.html.erb</p>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-10 mx-auto">
+
+      <h5 class="font-weight-bold ml-5 mb-5"><span class="bg-light px-4">商品詳細</span></h5>
+
+      <div class="row mx-auto">
+        <!--商品画像-->
+        <div class="col-4 pt-3">
+          <%= image_tag @item.get_image(200, 150) %>
+        </div>
+
+        <!--商品詳細-->
+        <div class="col-7">
+          <table class="table table-borderless">
+            <tr>
+              <td>商品名</td>
+              <td class="h5"><%= @item.name %></td>
+            </tr>
+            <tr>
+              <td>商品説明</td>
+              <td class="h5"><%= @item.description %></td>
+            </tr>
+            <tr>
+              <td>ジャンル</td>
+              <td class="h5"><%= @item.genre.name %></td>
+            </tr>
+            <tr>
+              <td>税込価格<br>(税抜価格)</td>
+              <td class="h5 align-middle"><%= number_with_delimiter(@item.with_tax_price) %>（<%= number_with_delimiter(@item.price) %>）円</td>
+            </tr>
+            <tr>
+              <td>販売ステータス</td>
+              <td class="h5">
+                <% if @item.is_active %>
+                  <span style="color: green;">販売中</span>
+                <% else %>
+                  <span style="color: gray;">販売停止中</span>
+                <% end %>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <!--編集ページ遷移ボタン-->
+        <div class="mx-auto mt-5">
+          <%= link_to "編集する", edit_admin_item_path(@item.id), class:"btn btn-success btn-lg" %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
