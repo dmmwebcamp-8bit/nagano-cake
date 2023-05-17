@@ -32,7 +32,7 @@
               <%= image_tag item.get_image(200, 150) %>
             <% end %><br>
             <b><%= item.name %></b><br>
-            <b>¥<%= item.price %></b>
+            <b>¥<%= number_with_delimiter(item.price) %></b>
           </div>
         <% end %>
 

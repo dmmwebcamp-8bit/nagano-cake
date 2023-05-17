@@ -31,7 +31,7 @@
             <tr>
               <th><%= item.id %></th>
               <th><%= link_to item.name, admin_item_path(item) %></th>
-              <th><%= item.price %></th>
+              <th><%= number_with_delimiter(item.price) %></th>
               <th><%= item.genre.name %></th>
               <th>
                 <% if item.is_active %>
