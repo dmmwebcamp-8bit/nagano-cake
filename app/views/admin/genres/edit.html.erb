@@ -2,13 +2,14 @@
   <div class="row">
 
     <div class="col-7">
-      <h5 class="font-weight-bold mb-5"><span class="bg-light px-4">ジャンル編集</span></h5>
+      <h5 class="font-weight-bold ml-5 mb-3"><span class="bg-light px-4">ジャンル編集</span></h5>
 
+      <!--ジャンル編集欄-->
       <%= form_with model: @genre, url: admin_genre_path do |f| %>
 
         <table class="table table-borderless my-5">
           <tr>
-            <td>ジャンル名</td>
+            <td class="align-middle">ジャンル名</td>
             <td><%= f.text_field :name, placeholder: "ジャンル名", class:"form-control" %></td>
             <td><%= f.submit "変更を保存", class:"btn btn-block btn-success font-weight-bold ml-3" %></td>
           </tr>

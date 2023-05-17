@@ -15,6 +15,7 @@
         </div>
       </div>
 
+      <!--各行の説明-->
       <table class="table mt-4">
         <thead class="bg-light">
           <tr>
@@ -26,6 +27,7 @@
           </tr>
         </thead>
 
+        <!--商品一覧-->
         <% @items.each do |item| %>
           <tbody>
             <tr>
@@ -46,6 +48,7 @@
 
       </table>
 
+      <!--ページネーションの設定-->
       <div class="row">
         <div class="mx-auto">
           <%= paginate @items, theme: 'bootstrap-5' %>
