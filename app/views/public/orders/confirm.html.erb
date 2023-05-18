@@ -24,7 +24,7 @@
                 <td class="align-middle"><%= cart_item.item.name %></td>
                 <td class="align-middle"><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
                 <td class="align-middle"><%= cart_item.amount %></td>
-                <td class="align-middle"><%= cart_item.subtotal %></td>
+                <td class="align-middle"><%= cart_item.subtotal.to_s(:delimited) %></td>
               </tr>
               <% @total += cart_item.subtotal %>
             <% end %>

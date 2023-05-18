@@ -12,5 +12,13 @@ class Order < ApplicationRecord
                 packaging_products:3,
                 shipped_products:4}
 
+  ## 注文詳細の数量の合計を返す
+  def total_amount
+    amount = 0
+    order_details.each do |order_detail|
+      amount += order_detail.quantity
+    end
+    return amount
+  end
 
 end
