@@ -6,6 +6,8 @@
 
       <h5 class="font-weight-bold ml-5 mb-5"><span class="bg-light px-4">新規会員登録</span></h5>
 
+      <%= render "devise/shared/error_messages", resource: resource %>
+
       <!--新規登録フォーム-->
       <%= form_with model: @customer, url: customer_registration_path do |f| %>
         <div class="form-group">
