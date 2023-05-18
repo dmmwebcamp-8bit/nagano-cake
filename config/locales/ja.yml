@@ -16,3 +16,6 @@
           waiting_for_making: "製作待ち"
           process_in_making: "製作中"
           finished_making: "製作完了"
+    time:
+      formats:
+        default: "%Y/%m/%d %H:%M:%S"
