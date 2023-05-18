@@ -1,9 +1,10 @@
 <div class="container my-5">
   <div class="row">
 
+    <!--サイドバー部分-->
     <div class="col-2">
       <div class="card border-dark">
-        <h7 class="card-title text-center font-weight-bold">ジャンル検索</h7>
+        <h7 class="card-title text-center font-weight-bold pt-3">ジャンル検索</h7>
         <hr class="my-1 border-dark">
         <div class="card-body pt-2 pb-5">
           <% @genres.each do |genre| %>
@@ -13,7 +14,9 @@
       </div>
     </div>
 
+    <!--メイン部分-->
     <div class="col-9 offset-1">
+      <!--メイン画像の仮置き-->
       <div class="bg-primary d-flex justify-content-center align-items-center" style="width: 700px; height: 300px">
         <div class="card mb-3" style="width: 400px; height: 100px">
      　    ようこそながのCAKEへ！<br>
@@ -23,6 +26,7 @@
         </div>
       </div>
 
+      <!--新着商品群-->
       <div class="h2 font-weight-bold my-3">新着商品</div>
       <div class="items d-flex">
 
