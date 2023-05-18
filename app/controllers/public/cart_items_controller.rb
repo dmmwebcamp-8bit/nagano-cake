@@ -24,7 +24,8 @@ class Public::CartItemsController < ApplicationController
   def create
     cart_item = current_customer.cart_items.new(cart_item_params)
     cart_item.item_id = cart_item_params[:item_id]
-    if cart_item.save
+    if cart_item.amount != nil
+      cart_item.save
       redirect_to cart_items_path
     else
       redirect_to request.referer
