@@ -16,3 +16,18 @@
           waiting_for_making: "製作待ち"
           process_in_making: "製作中"
           finished_making: "製作完了"
+    time:
+      formats:
+        default: "%Y/%m/%d %H:%M:%S"
+    activerecord:
+      attributes:
+        customer:
+          email: "メールアドレス"
+          password: "パスワード"
+          first_name: "名"
+          last_name: "姓"
+          first_name_kana: "メイ"
+          last_name_kana: "セイ"
+          phone_number: "電話番号"
+          postal_code: "郵便番号"
+          address: "住所"

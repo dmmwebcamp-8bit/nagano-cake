@@ -1,6 +1,8 @@
 class Admin::CustomersController < ApplicationController
+    before_action :authenticate_admin!
+
   def index
-    @customers = Customer.all.order(id: "ASC").page(params[:page]).per(10)
+    @customers = Customer.page(params[:page]).per(10)
   end
 
   def show
@@ -16,6 +18,11 @@ class Admin::CustomersController < ApplicationController
     customer.update(customer_params)
     flash[:notice] = "会員情報を更新しました"
     redirect_to admin_customers_path
+  end
+
+  def order_history
+    @customer = Customer.find(params[:customer_id])
+    @orders = @customer.orders.order(created_at: "DESC").page(params[:page]).per(10)
   end
 
   private

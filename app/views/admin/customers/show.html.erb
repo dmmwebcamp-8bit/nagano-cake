@@ -48,7 +48,7 @@
           <td>
             <div class="d-flex">
               <%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-sm btn-success px-4 mr-5" %>
-              <%= link_to "注文履歴一覧を見る", admin_path, class: "btn btn-sm btn-primary px-4" %>
+              <%= link_to "注文履歴一覧を見る", admin_customer_order_history_path(@customer), class: "btn btn-sm btn-primary px-4" %>
             </div>
           </td>
         </tr>
