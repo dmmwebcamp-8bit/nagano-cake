@@ -1,14 +1,10 @@
 <div class="container my-5">
   <div class="row">
     <div class="col-10">
-      
-      <!--フラッシュメッセージ-->
-      <div class="text-danger font-weight-bold mb-3">
-        <%= flash[:notice] %>
-      </div>
+
 
       <h5 class="mb-5"><span class="bg-light px-4">会員一覧</span></h5>
-      
+
       <!--会員一覧テーブル-->
       <div class="row">
         <div class="col-10 mx-auto">
@@ -42,10 +38,10 @@
               <% end %>
             </tbody>
           </table>
-    
+
           <!--ページネーション-->
           <div class="d-flex justify-content-center">
-            <%= paginate @customers %>
+            <%= paginate @customers, theme: 'bootstrap-5' %>
           </div>
         </div>
       </div>
