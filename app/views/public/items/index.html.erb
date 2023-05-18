@@ -1,2 +1,54 @@
-<h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
+<div class="container my-5">
+  <div class="row">
+
+    <!--サイドバー部分-->
+    <%= render 'public/homes/sidebar', genres: @genres %>
+
+    <!--メイン部分-->
+    <div class="col-9 offset-1">
+
+      <!--商品群-->
+      <!--ジャンルで絞り込む時 else 全ての商品を見る時-->
+      <% if params[:genre_id] %>
+        <span class="h2 font-weight-bold"><%= @genre.name %>一覧</span>
+        (全<%= Item.where(genre_id: params[:genre_id], is_active: true).count %>件)
+      <% else %>
+        <span class="h2 font-weight-bold">商品一覧</span>
+        (全<%= Item.where(is_active: true).count %>件)
+      <% end %>
+
+      <div class="items d-flex ml-4">
+
+        <% if @items.empty? %>
+          該当する商品はありません
+        <% else %>
+          <!--１つの行に４商品を表示する-->
+          <div class="row">
+            <% @items.each do |item| %>
+
+              <!--１商品-->
+              <div class="col-3 mt-3", style="padding-left: 0px">
+                <%= link_to item_path(item.id) do %>
+                  <%= image_tag item.get_image(180, 180) %>
+                <% end %><br>
+                <b><%= item.name %></b><br>
+                <b>¥<%= number_with_delimiter(item.price) %></b>
+              </div>
+
+            <% end %>
+          </div>
+        <% end %>
+
+      </div>
+
+      <!--ページネーションの設定-->
+      <div class="row">
+        <div class="mx-auto mt-4">
+          <%= paginate @items, theme: 'bootstrap-5' %>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

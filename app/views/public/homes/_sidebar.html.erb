@@ -1,0 +1,11 @@
+<div class="col-2">
+  <div class="card border-dark">
+    <h7 class="card-title text-center font-weight-bold pt-3">ジャンル検索</h7>
+    <hr class="my-1 border-dark">
+    <div class="card-body pt-2 pb-5">
+      <% genres.each do |genre| %>
+        <%= link_to genre.name, items_path(genre_id: genre.id), class: "mb-2" %><br>
+      <% end %>
+    </div>
+  </div>
+</div>

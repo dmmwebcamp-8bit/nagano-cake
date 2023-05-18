@@ -2,17 +2,7 @@
   <div class="row">
 
     <!--サイドバー部分-->
-    <div class="col-2">
-      <div class="card border-dark">
-        <h7 class="card-title text-center font-weight-bold pt-3">ジャンル検索</h7>
-        <hr class="my-1 border-dark">
-        <div class="card-body pt-2 pb-5">
-          <% @genres.each do |genre| %>
-            <%= link_to genre.name, items_path(genre_id: genre.id), class: "mb-2" %><br>
-          <% end %>
-        </div>
-      </div>
-    </div>
+    <%= render 'sidebar', genres: @genres %>
 
     <!--メイン部分-->
     <div class="col-9 offset-1">
@@ -26,19 +16,25 @@
         </div>
       </div>
 
-      <!--新着商品群-->
-      <div class="h2 font-weight-bold my-3">新着商品</div>
-      <div class="items d-flex">
+      <!--商品群-->
+      <div class="h2 font-weight-bold mt-4">新着商品</div>
+      <div class="items d-flex mx-4">
 
-        <% @items.each do |item| %>
-          <div class="item mr-3">
-            <%= link_to item_path(item.id) do %>
-              <%= image_tag item.get_image(200, 150) %>
-            <% end %><br>
-            <b><%= item.name %></b><br>
-            <b>¥<%= number_with_delimiter(item.price) %></b>
-          </div>
-        <% end %>
+        <!--１つの行に４商品を表示する-->
+        <div class="row">
+          <% @items.each do |item| %>
+
+            <!--１商品-->
+            <div class="col-3 mt-3", style="padding-left: 0px">
+              <%= link_to item_path(item.id) do %>
+                <%= image_tag item.get_image(180, 180) %>
+              <% end %><br>
+              <b><%= item.name %></b><br>
+              <b>¥<%= number_with_delimiter(item.price) %></b>
+            </div>
+
+          <% end %>
+        </div>
 
       </div>
 
