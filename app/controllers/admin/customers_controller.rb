@@ -18,6 +18,11 @@ class Admin::CustomersController < ApplicationController
     redirect_to admin_customers_path
   end
 
+  def order_history
+    @customer = Customer.find(params[:customer_id])
+    @orders = @customer.orders.order(created_at: "DESC").page(params[:page]).per(10)
+  end
+
   private
 
   def customer_params
