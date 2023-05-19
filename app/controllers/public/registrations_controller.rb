@@ -61,6 +61,16 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
+  def update
+    @customer = current_customer
+    if @customer.update(customer_params)
+      flash[:notice] = "会員情報を更新しました"
+      redirect_to customers_path
+    else
+      render template: "public/customers/edit"
+    end
+  end
+
   def after_sign_in_path_for(resource)
     customers_path
   end
@@ -77,7 +87,11 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :phone_number, :postal_code, :address])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :phone_number, :postal_code, :address])
+    # devise_parameter_sanitizer.permit(:account_update, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :phone_number, :postal_code, :address])
+  end
+
+  def customer_params
+    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :phone_number, :postal_code, :address, :is_deleated)
   end
 
 end
