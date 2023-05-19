@@ -12,22 +12,23 @@
           <thead>
             <th width=40% colspan=2>商品名</th>
             <th width=15% >単価(税込)</th>
-            <th width=30% colspan=2>数量</th>
-            <th width=15% >小計</th>
+            <th width=16% >数量</th>
+            <th width=10% >小計</th>
+            <th width=15% ></th>
           </thead>
           <tbody>
             <% @cart_items.each do |cart_item|%>
               <tr>
                 <td class="align-middle"><%= image_tag cart_item.item.get_image(80,40) %></td>
                 <td class="align-middle"><%= cart_item.item.name %></td>
-                <td class="align-middle"><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
+                <td class="align-middle text-right pr-5"><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
                 <td class="align-middle">
                   <%= form_with model: cart_item, class: "form-inline" do |f| %>
-                    <%= f.select :amount, [*1..10], {}, {class: 'form-control'} %>
+                    <%= f.select :amount, [*1..[cart_item.amount,10].max()], {}, {class: 'form-control'} %>
                     <%= f.submit '変更', class: 'btn btn-success ml-2' %>
                   <% end %>
                 </td>
-                <td class="align-middle"><%= cart_item.subtotal.to_s(:delimited) %></td>
+                <td class="align-middle text-right pr-4"><%= cart_item.subtotal.to_s(:delimited) %></td>
                 <td class="align-middle"><%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, class: "btn btn-danger" %></td>
               </tr>
               <% @total += cart_item.subtotal %>
@@ -50,9 +51,12 @@
           </table>
         </div>
       </div>
-      <div class="row justify-content-center">
-        <%= link_to "情報入力に進む", new_order_path ,class: "btn btn-success" %>
-      </div>
+
+      <% if @cart_items.exists? %>
+        <div class="row justify-content-center">
+          <%= link_to "情報入力に進む", new_order_path ,class: "btn btn-success" %>
+        </div>
+      <% end %>
 
     </div>
   </div>

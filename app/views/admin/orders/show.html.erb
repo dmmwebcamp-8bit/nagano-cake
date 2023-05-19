@@ -46,24 +46,25 @@
       <b>注文内容</b>
       <table class="table">
         <thead>
-          <th width=30% >商品</th>
-          <th width=20% >単価（税込）</th>
+          <th width=25% >商品</th>
+          <th width=17% >単価（税込）</th>
           <th width=10% >個数</th>
-          <th width=10% >小計</th>
-          <th width=20% >製作ステータス</th>
-          <th width=10% ></th>
+          <th width=13% >小計</th>
+          <th width=25% >製作ステータス</th>
         </thead>
         <tbody>
           <% @order.order_details.each do |order_detail| %>
             <tr>
               <td class="align-middle"><%= order_detail.item.name %></td>
-              <td class="align-middle"><%= order_detail.price.to_s(:delimited) %></td>
-              <td class="align-middle"><%= order_detail.quantity.to_s(:delimited) %></td>
-              <td class="align-middle"><%= order_detail.sub_total.to_s(:delimited) %></td>
-              <%= form_with model: [:admin, @order, order_detail] do |f| %>
-                <td><%= f.select :making_status ,OrderDetail.making_statuses.keys.map { |k| [t("enums.order_detail.making_status.#{k}"), k] },{},{class: "form-control"} %></td>
-                <td><%= f.submit "更新", class: "btn btn-success" %></td>
-              <% end %>
+              <td class="align-middle text-right pr-4"><%= order_detail.price.to_s(:delimited) %></td>
+              <td class="align-middle text-right"><%= order_detail.quantity.to_s(:delimited) %></td>
+              <td class="align-middle text-right"><%= order_detail.sub_total.to_s(:delimited) %></td>
+              <td>
+                <%= form_with model: [:admin, @order, order_detail], class: "form-inline" do |f| %>
+                  <%= f.select :making_status ,OrderDetail.making_statuses.keys.map { |k| [t("enums.order_detail.making_status.#{k}"), k] },{},{class: "form-control"} %>
+                  <%= f.submit "更新", class: "btn btn-success ml-2" %>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>

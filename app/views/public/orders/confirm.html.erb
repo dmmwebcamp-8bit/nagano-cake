@@ -8,23 +8,23 @@
   </div>
 
   <div class="row">
-    <div class="col-9">
+    <div class="col-8">
       <div class="table-responsive">
         <table class="table">
           <thead>
             <th colspan=2>商品名</th>
-            <th>単価(税込)</th>
-            <th>数量</th>
-            <th>小計</th>
+            <th width=17%>単価(税込)</th>
+            <th width=10%>数量</th>
+            <th width=15%>小計</th>
           </thead>
           <tbody>
             <% @cart_items.each do |cart_item|%>
               <tr>
                 <td class="align-middle"><%= image_tag cart_item.item.get_image(80,40) %></td>
                 <td class="align-middle"><%= cart_item.item.name %></td>
-                <td class="align-middle"><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
-                <td class="align-middle"><%= cart_item.amount %></td>
-                <td class="align-middle"><%= cart_item.subtotal.to_s(:delimited) %></td>
+                <td class="align-middle text-right pr-5"><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
+                <td class="align-middle text-right pr-5"><%= cart_item.amount %></td>
+                <td class="align-middle text-right pr-5"><%= cart_item.subtotal.to_s(:delimited) %></td>
               </tr>
               <% @total += cart_item.subtotal %>
             <% end %>
@@ -38,15 +38,15 @@
         <tbody>
           <tr>
             <td>送料</td>
-            <td><%= @shipping_cost.to_s(:delimited) %></td>
+            <td class="text-right pr-5"><%= @shipping_cost.to_s(:delimited) %></td>
           </tr>
           <tr>
             <td>商品合計</td>
-            <td><%= @total.to_s(:delimited) %></td>
+            <td class="text-right pr-5"><%= @total.to_s(:delimited) %></td>
           </tr>
           <tr>
             <td>請求合計</td>
-            <td><%= (@shipping_cost + @total).to_s(:delimited) %></td>
+            <td class="text-right pr-5"><%= (@shipping_cost + @total).to_s(:delimited) %></td>
           </tr>
         </tbody>
       </table>

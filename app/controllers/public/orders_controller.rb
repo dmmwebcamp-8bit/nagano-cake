@@ -1,5 +1,6 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
+  before_action :check_cart_item, only: [:new, :confirm]
 
   def new
   end
@@ -16,14 +17,26 @@ class Public::OrdersController < ApplicationController
       @address = current_customer.address
       @name = current_customer.full_name
     when "2"
-      address = Address.find(params[:address_id])
-      @postal_code = address.postal_code
-      @address = address.address
-      @name = address.name
+      # 選択チェック
+      unless params[:address_id].present?
+        flash[:notice] = "住所を選択してください。"
+        redirect_to new_order_path
+      else
+        address = Address.find(params[:address_id])
+        @postal_code = address.postal_code
+        @address = address.address
+        @name = address.name
+      end
     else
-      @postal_code = params[:postal_code]
-      @address = params[:address]
-      @name = params[:name]
+      # 入力チェック
+      if params[:postal_code]=="" || params[:address]=="" || params[:name]==""
+        flash[:notice] = "お届け先郵便番号・住所・宛名を入力してください。"
+        redirect_to new_order_path
+      else
+        @postal_code = params[:postal_code]
+        @address = params[:address]
+        @name = params[:name]
+      end
     end
   end
 
@@ -56,7 +69,13 @@ class Public::OrdersController < ApplicationController
   end
 
   private
+
     def order_params
       params.require(:order).permit(:payment_method, :total_cost, :shipping_cost, :postal_code, :address, :name)
     end
+
+    def check_cart_item
+      redirect_to root_path unless current_customer.cart_items.present?
+    end
+
 end

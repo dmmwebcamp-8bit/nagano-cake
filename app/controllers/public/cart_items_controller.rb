@@ -23,29 +23,15 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-    cart_item = current_customer.cart_items.new(cart_item_params)
-    cart_item.item_id = cart_item_params[:item_id]
-    if cart_item.amount != nil
-      cart_item.save
-      redirect_to cart_items_path
-    else
-      redirect_to request.referer
-    end
-
     cart_item = current_customer.cart_items.find_by(item_id: cart_item_params[:item_id])
-    if cart_item.exist?
+    if cart_item
       total_amount = cart_item.amount + cart_item_params[:amount].to_i
       cart_item.update(amount: total_amount)
-      redirect_to cart_items_path
     else
       cart_item = current_customer.cart_items.new(cart_item_params)
-      if cart_item.save
-        redirect_to cart_items_path
-      else
-        render request.referer
-      end
+      cart_item.save
     end
-
+    redirect_to cart_items_path
   end
 
   private
