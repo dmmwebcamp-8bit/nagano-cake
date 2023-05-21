@@ -2,23 +2,24 @@
     enums:
       order:
         payment_method:
-          transfer: "銀行振込"
+          transfer:    "銀行振込"
           credit_card: "クレジットカード"
         status:
           waiting_for_payment: "入金待ち"
-          confirm_payment: "入金確認"
-          making_products: "製作中"
-          packaging_products: "発送準備中"
-          shipped_products: "発送済み"
+          confirm_payment:     "入金確認"
+          making_products:     "製作中"
+          packaging_products:  "発送準備中"
+          shipped_products:    "発送済み"
       order_detail:
         making_status:
-          can_not_start: "着手不可"
-          waiting_for_making: "製作待ち"
-          process_in_making: "製作中"
-          finished_making: "製作完了"
+          can_not_start:       "着手不可"
+          waiting_for_making:  "製作待ち"
+          process_in_making:   "製作中"
+          finished_making:     "製作完了"
     time:
       formats:
         default: "%Y/%m/%d %H:%M:%S"
+        short:   "%Y/%m/%d"
     activerecord:
       attributes:
         customer:
