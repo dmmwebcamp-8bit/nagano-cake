@@ -1,7 +1,7 @@
 <div class="container my-5">
   <div class="row">
     <div class="col-10 mx-auto">
-      
+
       <!--エラーメッセージ-->
       <%= render 'layouts/errors', obj: @item %>
 
@@ -26,7 +26,7 @@
             </tr>
             <tr>
               <td>ジャンル</td>
-              <td><%= f.collection_select :genre_id, @genres, :id, :name, { prompt: "-- 選択してください --" }, class: "form-control" %></td>
+              <td><%= f.collection_select :genre_id, @genres, :id, :name, { prompt: "-- 選択してください --" }, {required: true, class: "form-control"} %></td>
             </tr>
             <tr>
               <td>税抜価格</td>

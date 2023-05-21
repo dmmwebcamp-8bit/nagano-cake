@@ -42,10 +42,3 @@
           name: "商品名"
           description: "商品説明"
           price: "価格"
-          genre: "商品のジャンル"
-      errors:
-        models:
-          item:
-            attributes:
-              genre:
-                required: "を選択してください。"
