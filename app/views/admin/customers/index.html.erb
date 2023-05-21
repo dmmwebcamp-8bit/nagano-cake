@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-10 mx-auto">
 
-      <h5 class="mb-5"><span class="bg-light px-4">会員一覧</span></h5>
+      <h5 class="font-weight-bold mb-5"><span class="bg-light px-4">会員一覧</span></h5>
 
       <!--会員一覧テーブル-->
       <div class="row">
@@ -27,10 +27,10 @@
                   </td>
                   <td><%= customer.email %></td>
                   <td>
-                    <% if customer.is_deleated == false %>
-                      <p class="text-success font-weight-bold">有効</p>
-                    <% else %>
+                    <% if customer.is_deleated %>
                       <p class="text-secondary font-weight-bold">退会</p>
+                    <% else %>
+                      <p class="text-success font-weight-bold">有効</p>
                     <% end %>
                   </td>
                 </tr>

@@ -64,8 +64,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   def update
     @customer = current_customer
     if @customer.update(customer_params)
-      flash[:notice] = "会員情報を更新しました"
-      redirect_to customers_path
+      redirect_to customers_path, notice: "会員情報を更新しました"
     else
       render template: "public/customers/edit"
     end
