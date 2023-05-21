@@ -19,29 +19,25 @@
       <!--商品群-->
       <div class="h2 font-weight-bold mt-4">新着商品</div>
       <div class="items d-flex mx-4">
-
         <!--１つの行に４商品を表示する-->
         <div class="row">
           <% @items.each do |item| %>
-
             <!--１商品-->
             <div class="col-3 mt-3", style="padding-left: 0px">
               <%= link_to item_path(item.id) do %>
-                <%= image_tag item.get_image(180, 180) %>
+                <div class="d-flex align-items-center" style="width: 180px; height: 180px;">
+                  <%= image_tag item.get_image(180, 180) %>
+                </div>
               <% end %><br>
               <b><%= item.name %></b><br>
               <b>¥<%= number_with_delimiter(item.price) %></b>
             </div>
-
           <% end %>
         </div>
-
       </div>
-
       <div class="mt-3 text-right">
         <%= link_to "全ての商品を見る >", items_path %>
       </div>
-
     </div>
 
   </div>
