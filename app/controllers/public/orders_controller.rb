@@ -19,8 +19,8 @@ class Public::OrdersController < ApplicationController
     when "2"
       # 選択チェック
       unless params[:address_id].present?
-        flash[:notice] = "住所を選択してください。"
-        redirect_to new_order_path
+        flash.now[:danger] = "住所を選択してください。"
+        render :new
       else
         address = Address.find(params[:address_id])
         @postal_code = address.postal_code
@@ -30,8 +30,8 @@ class Public::OrdersController < ApplicationController
     else
       # 入力チェック
       if params[:postal_code]=="" || params[:address]=="" || params[:name]==""
-        flash[:notice] = "お届け先郵便番号・住所・宛名を入力してください。"
-        redirect_to new_order_path
+        flash.now[:danger] = "お届け先郵便番号・住所・宛名を入力してください。"
+        render :new
       else
         @postal_code = params[:postal_code]
         @address = params[:address]

@@ -12,20 +12,24 @@
         <table class="table">
           <tbody>
             <tr>
-              <td>注文日</td>
-              <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
+              <td class="pl-5">注文日</td>
+              <td><%= l @order.created_at, format: :short %></td>
             </tr>
             <tr>
-              <td>配送先</td>
+              <td class="pl-5">配送先</td>
               <td><%= '〒' + @order.postal_code %><br><%= @order.address %><br><%= @order.name %></td>
             </tr>
             <tr>
-              <td>支払方法</td>
+              <td class="pl-5">支払方法</td>
               <td><%= Order.payment_methods_i18n[@order.payment_method] %></td>
             </tr>
             <tr>
-              <td>ステータス</td>
+              <td class="pl-5">ステータス</td>
               <td><%= Order.statuses_i18n[@order.status] %></td>
+            </tr>
+            <tr>
+              <td width=30%></td>
+              <td width=70%></td>
             </tr>
           </tbody>
         </table>
@@ -38,15 +42,15 @@
         <tbody>
           <tr>
             <td>商品合計</td>
-            <td><%= (@order.total_cost-@order.shipping_cost).to_s(:delimited) %></td>
+            <td class="text-right pr-5"><%= (@order.total_cost-@order.shipping_cost).to_s(:delimited) %></td>
           </tr>
           <tr>
             <td>配送料</td>
-            <td><%= @order.shipping_cost.to_s(:delimited) %></td>
+            <td class="text-right pr-5"><%= @order.shipping_cost.to_s(:delimited) %></td>
           </tr>
           <tr>
             <td><b>ご請求額</b></td>
-            <td><%= @order.total_cost.to_s(:delimited) %></td>
+            <td class="text-right pr-5"><%= @order.total_cost.to_s(:delimited) %></td>
           </tr>
         </tbody>
       </table>
@@ -66,10 +70,10 @@
         <tbody>
           <% @order.order_details.each do |order_detail| %>
             <tr>
-              <td><%= order_detail.item.name %></td>
-              <td><%= order_detail.price.to_s(:delimited) %></td>
-              <td><%= order_detail.quantity.to_s(:delimited) %></td>
-              <td><%= order_detail.sub_total.to_s(:delimited) %></td>
+              <td class="pl-5"><%= order_detail.item.name %></td>
+              <td class="text-right pr-5"><%= order_detail.price.to_s(:delimited) %></td>
+              <td class="text-right pr-5"><%= order_detail.quantity.to_s(:delimited) %></td>
+              <td class="text-right pr-5"><%= order_detail.sub_total.to_s(:delimited) %></td>
             </tr>
           <% end %>
         </tbody>
