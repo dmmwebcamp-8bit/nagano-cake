@@ -38,3 +38,14 @@
           name: "宛名"
           postal_code: "郵便番号"
           address: "住所"
+        item:
+          name: "商品名"
+          description: "商品説明"
+          price: "価格"
+          genre: "商品のジャンル"
+      errors:
+        models:
+          item:
+            attributes:
+              genre:
+                required: "を選択してください。"
