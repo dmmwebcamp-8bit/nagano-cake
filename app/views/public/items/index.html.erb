@@ -29,7 +29,9 @@
               <!--１商品-->
               <div class="col-3 mt-3", style="padding-left: 0px">
                 <%= link_to item_path(item.id) do %>
-                  <%= image_tag item.get_image(180, 180) %>
+                  <div class="d-flex align-items-center" style="width: 180px; height: 180px;">
+                    <%= image_tag item.get_image(180, 180) %>
+                  </div>
                 <% end %><br>
                 <b><%= item.name %></b><br>
                 <b>¥<%= number_with_delimiter(item.price) %></b>
