@@ -64,8 +64,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   def update
     @customer = current_customer
     if @customer.update(customer_params)
-      flash[:notice] = "会員情報を更新しました"
-      redirect_to customers_path
+      redirect_to customers_path, notice: "会員情報を更新しました"
     else
       render template: "public/customers/edit"
     end
@@ -87,7 +86,6 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :phone_number, :postal_code, :address])
-    # devise_parameter_sanitizer.permit(:account_update, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :phone_number, :postal_code, :address])
   end
 
   def customer_params
