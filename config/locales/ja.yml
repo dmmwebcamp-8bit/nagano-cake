@@ -32,7 +32,9 @@
           phone_number: "電話番号"
           postal_code: "郵便番号"
           address: "住所"
-    activerecord:
-      attributes:
         genre:
           name: "ジャンル名"
+        address:
+          name: "宛名"
+          postal_code: "郵便番号"
+          address: "住所"
