@@ -54,10 +54,22 @@ Address.create!(
 
 Genre.create!(
   [
-    {name: "ケーキ"},
-    {name: "焼き菓子"},
-    {name: "プリン"},
-    {name: "キャンディ"}
+    {
+      name: "ケーキ",
+      is_active: true
+    },
+    {
+      name: "焼き菓子",
+      is_active: true
+    },
+    {
+      name: "プリン",
+      is_active: true
+    },
+    {
+      name: "キャンディ",
+      is_active: true
+    }
   ]
 )
 
