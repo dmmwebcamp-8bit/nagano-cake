@@ -1,5 +1,4 @@
-class Admin::OrderDetailsController < ApplicationController
-  before_action :authenticate_admin!
+class Admin::OrderDetailsController < Admin::ApplicationController
 
   def update
     flash[:notice] = ""
