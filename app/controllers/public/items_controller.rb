@@ -1,4 +1,4 @@
-class Public::ItemsController < ApplicationController
+class Public::ItemsController < Public::ApplicationController
   def index
     if params[:genre_id]
       @genre = Genre.find(params[:genre_id])

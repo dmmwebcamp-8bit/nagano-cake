@@ -1,5 +1,4 @@
-class Admin::HomesController < ApplicationController
-  before_action :authenticate_admin!
+class Admin::HomesController < Admin::ApplicationController
 
   def top
     @orders = Order.all.order(created_at: "DESC").page(params[:page]).per(10)

@@ -1,5 +1,4 @@
-class Public::OrdersController < ApplicationController
-  before_action :authenticate_customer!
+class Public::OrdersController < Public::ApplicationController
   before_action :check_cart_item, only: [:new, :confirm]
 
   def new
