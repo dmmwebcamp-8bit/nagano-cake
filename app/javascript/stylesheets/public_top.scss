@@ -1,0 +1,76 @@
+/*スライダー処理*/
+.slider {
+  position:relative;
+  z-index: 1; /*z-index を持つ要素はより小さな要素の上に重なる*/
+}
+
+.slider-item {
+    width: 100vh;/*各スライダーの幅、.sliderの横幅一杯の100%を指定*/
+    height: 400px;/*各スライダーの高さ、.sliderと同じ高さに指定*/
+    background-repeat: no-repeat;/*背景画像をリピートしない*/
+    background-position: center;/*背景画像の位置を中央に*/
+    background-size: cover;/*背景画像が.slider-item全体を覆い表示*/
+}
+.slider-item01 {
+  background: url("../../assets/images/top/1.jpg");/*背景画像のパスを指定*/
+  background-size:  cover;
+}
+
+.slider-item02 {
+  background-image: url(../../assets/images/top/2.jpg);
+  background-size:  cover;
+}
+
+.slider-item03 {
+  background-image: url(../../assets/images/top/3.jpg);
+  background-size:  cover;
+}
+
+#text_box {
+  position: relative;
+  position: fixed; /* 追従させる為にfixedの値を記述します */
+  z-index: 99999; /* 他の要素の下に隠れないように全面配置させます */
+  top: 200px; /* 上から150pxのところにバナーを配置します */
+  right: 100px; /* 右から40pxのところにバナーを配置します */
+  background-color: rgba(199, 149, 159, 0.5);
+}
+
+#text_box p {
+  color: white; /* バナーの横幅を指定してあげます */
+  font-size: 15px;
+}
+
+#is_delete {
+  display: none;
+}
+
+#close_btn {
+  display: block;
+  position: relative;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;  /* 丸みの度合い */
+  background: #9C7EA6; /* ボタンの背景色 */
+  opacity: 0.8;
+}
+
+#close_btn::before, #close_btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 3px; /* 棒の幅（太さ） */
+  height: 22px; /* 棒の高さ */
+  background: #fff; /* バツ印の色 */
+}
+
+#close_btn::before {
+  transform: translate(-50%,-50%) rotate(45deg);
+}
+
+#close_btn::after {
+  transform: translate(-50%,-50%) rotate(-45deg);
+}
