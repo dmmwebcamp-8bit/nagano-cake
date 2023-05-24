@@ -1,0 +1,18 @@
+<div class="information">
+  <div class="card border-0 text_box p-3">
+    <span class="close_btn"></span>
+    <p class="font-weight-bold">
+      ようこそながのCAKEへ！<br>
+      <br>
+      このサイトは、ケーキ販売のECサイトになります。<br>
+      会員でない方も商品の閲覧はできますが、<br>
+      購入には会員登録が必要になります。
+    </p>
+  </div>
+</div>
+
+<script>
+  $(".close_btn").click(function () {//ナビゲーションのリンクがクリックされたら
+      $(".text_box").addClass('is_delete');//ボタンの activeクラスを除去し
+  });
+</script>

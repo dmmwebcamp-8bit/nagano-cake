@@ -34,28 +34,58 @@
   top: 17%; /*上からの配置位置*/
   left: 40%; /*左からの配置位置*/
   -webkit-transform: translate(-30%, 0%);
-  // text-shadow: 2px 2px 5px black; /*文字の影等の処理*/
   text-align: center;
   font-size: 20px; /*文字のサイズ*/
   letter-spacing: 0.1em; /*文字の感覚*/
-  background-color: #8F8F8F;
-  opacity: 0.6;
+  background-color: rgba(199, 149, 159, 0.6);
 }
 
 
-.text-box {
-position: fixed; /* 追従させる為にfixedの値を記述します */
-z-index: 99999; /* 他の要素の下に隠れないように全面配置させます */
-top: 200px; /* 上から150pxのところにバナーを配置します */
-right: 100px; /* 右から40pxのところにバナーを配置します */
-background-color: rgba(199, 149, 159, 0.5);
+.text_box {
+  position: relative;
+  position: fixed; /* 追従させる為にfixedの値を記述します */
+  z-index: 99999; /* 他の要素の下に隠れないように全面配置させます */
+  top: 200px; /* 上から150pxのところにバナーを配置します */
+  right: 100px; /* 右から40pxのところにバナーを配置します */
+  background-color: rgba(199, 149, 159, 0.5);
 }
 
-.text-box p {
-color: white; /* バナーの横幅を指定してあげます */
-font-size: 15px;
+.text_box p {
+  color: white; /* バナーの横幅を指定してあげます */
+  font-size: 15px;
 }
 
 .is_delete {
   display: none;
+}
+
+.close_btn {
+  display: block;
+  position: relative;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;  /* 丸みの度合い */
+  background: #9C7EA6; /* ボタンの背景色 */
+  opacity: 0.8;
+}
+
+.close_btn::before, .close_btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 3px; /* 棒の幅（太さ） */
+  height: 22px; /* 棒の高さ */
+  background: #fff; /* バツ印の色 */
+}
+
+.close_btn::before {
+  transform: translate(-50%,-50%) rotate(45deg);
+}
+
+.close_btn::after {
+  transform: translate(-50%,-50%) rotate(-45deg);
 }
