@@ -1,4 +1,4 @@
-<div class="col-5 mx-auto flash">
+<div id="flash" class="col-5 mx-auto">
   <% flash.each do |message_type, message| %>
     <% if flash[:notice] %>
       <div class="alert alert-success text-center">
@@ -13,5 +13,5 @@
 </div>
 
 <script>
-  setTimeout("$('.flash').slideUp()", 2000);
+  setTimeout("$('#flash').fadeOut()", 2000);
 </script>
