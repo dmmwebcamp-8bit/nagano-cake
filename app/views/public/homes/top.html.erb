@@ -10,7 +10,9 @@
       <%= render 'slick' %>
 
       <!--インフォメーション-->
-      <%= render 'information' %>
+      <% unless customer_signed_in? %>
+        <%= render 'information' %>
+      <% end %>
 
       <!--商品群-->
       <div class="h2 font-weight-bold mt-4">新着商品</div>

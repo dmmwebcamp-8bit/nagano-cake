@@ -1,6 +1,6 @@
-<div class="information">
-  <div class="card border-0 text_box p-3">
-    <span class="close_btn"></span>
+<div id="information">
+  <div id="text_box" class="card border-0 p-3">
+    <span id="close_btn"></span>
     <p class="font-weight-bold">
       ようこそながのCAKEへ！<br>
       <br>
@@ -12,7 +12,8 @@
 </div>
 
 <script>
-  $(".close_btn").click(function () {//ナビゲーションのリンクがクリックされたら
-      $(".text_box").addClass('is_delete');//ボタンの activeクラスを除去し
+  $("#close_btn").click(function () {           //ナビゲーションのリンクがクリックされたら
+      $("#text_box").attr("id", 'is_delete');   //ID is_deleteを付与
   });
+  setTimeout("$('#close_btn').click()", 5000);  //5秒後にclose_btnをclickする
 </script>
