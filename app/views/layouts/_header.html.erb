@@ -16,7 +16,7 @@
               <ul class="navbar-nav ml-5">
                 <% if customer_signed_in? %>
                   <!--Customer ログイン後header-->
-                  <span class="navbar-text text-right">ようこそ、<%= current_customer.full_name %>さん</span>
+                  <span class="navbar-text text-right mr-3">ようこそ、<%= current_customer.full_name %>さん</span>
                   <li><%= link_to "マイページ", customers_path,                class: 'nav-link text-right' %></li>
                   <li><%= link_to "商品一覧",   items_path,                    class: 'nav-link text-right' %></li>
                   <li><%= link_to "カート",     cart_items_path,               class: 'nav-link text-right' %></li>

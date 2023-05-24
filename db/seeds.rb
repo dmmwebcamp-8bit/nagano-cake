@@ -6,11 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+puts "--------- create Admin"
 Admin.create!(
   email: ENV['ADMIN_EMAIL'],
   password: ENV['ADMIN_PASS']
 )
 
+puts "--------- create Customer"
 Customer.create!(
   [
     {
@@ -41,6 +43,7 @@ Customer.create!(
   )
 end
 
+puts "--------- create Address"
 Address.create!(
   [
     {
@@ -52,6 +55,7 @@ Address.create!(
   ]
 )
 
+puts "--------- create Genre"
 Genre.create!(
   [
     {
@@ -73,6 +77,7 @@ Genre.create!(
   ]
 )
 
+puts "--------- create Item"
 item = Item.create!(
   name: "イチゴミルフィーユ",
   description: "サクサクのパイ生地にフレッシュなイチゴを挟んだミルフィーユ。おあがりよ！",
@@ -169,7 +174,7 @@ item = Item.create!(
 )
 item.image.attach(io: File.open(Rails.root.join('db/samples/sample12.png')), filename: 'sample12.png')
 
-
+puts "--------- create CartItem"
 CartItem.create!(
   [
     {
@@ -185,6 +190,7 @@ CartItem.create!(
   ]
 )
 
+puts "--------- create Order"
 Order.create!(
   [
     {
@@ -199,6 +205,7 @@ Order.create!(
   ]
 )
 
+puts "--------- create OrderDetail"
 OrderDetail.create!(
   [
     {
@@ -217,3 +224,5 @@ OrderDetail.create!(
     }
   ]
 )
+
+puts "--------- all END"

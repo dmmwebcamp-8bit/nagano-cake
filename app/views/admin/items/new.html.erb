@@ -5,11 +5,10 @@
       <!--エラーメッセージ-->
       <%= render 'layouts/errors', obj: @item %>
 
-      <h5 class="font-weight-bold ml-5 mb-5"><span class="bg-light px-4">新規商品登録</span></h5>
+      <h5 class="ml-5 mb-5"><span class="title-custom px-4">新規商品登録</span></h5>
 
-      <%= form_with model: [:admin, @item], url: admin_items_path do |f| %>
-        <div class="col-8 mx-auto form-group">
-
+      <div class="col-8 mx-auto form-group">
+        <%= form_with model: [:admin, @item], url: admin_items_path do |f| %>
           <!--新規商品情報入力フォーム-->
           <table class="table table-borderless">
             <tr>
@@ -42,14 +41,12 @@
               </td>
             </tr>
           </table>
-
           <!--新規商品登録ボタン-->
           <div class="text-center">
             <%= f.submit "新規登録", class: "btn btn-success btn-lg" %>
           </div>
-
-        </div>
-      <% end %>
+        <% end %>
+      </div>
 
     </div>
   </div>

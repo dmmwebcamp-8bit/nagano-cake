@@ -5,7 +5,7 @@
       <!--エラーメッセージ-->
       <%= render 'layouts/errors', obj: @address %>
 
-      <h5 class="font-weight-bold ml-5 mb-3"><span class="title-custom px-4">配送先登録 / 一覧</span></h5>
+      <h5 class="ml-5 mb-3"><span class="title-custom px-4">配送先登録 / 一覧</span></h5>
 
         <!--新規配送先登録-->
         <%= form_with model: @address do |f| %>
@@ -35,8 +35,8 @@
 
         <!--配送先一覧-->
         <div class="form-group">
-          <table class="table table-bordered">
-            <thead class="bg-light">
+          <table class="table table-bordered table-colored">
+            <thead>
               <tr>
                 <td>郵便番号</td>
                 <td>住所</td>
