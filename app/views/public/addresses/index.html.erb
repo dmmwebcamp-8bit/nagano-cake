@@ -1,11 +1,11 @@
 <div class="container my-5">
   <div class="row">
     <div class="col-10 mx-auto">
-      
+
       <!--エラーメッセージ-->
       <%= render 'layouts/errors', obj: @address %>
 
-      <h5 class="font-weight-bold ml-5 mb-3"><span class="bg-light px-4">配送先登録 / 一覧</span></h5>
+      <h5 class="font-weight-bold ml-5 mb-3"><span class="title-custom px-4">配送先登録 / 一覧</span></h5>
 
         <!--新規配送先登録-->
         <%= form_with model: @address do |f| %>

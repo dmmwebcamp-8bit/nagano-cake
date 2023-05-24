@@ -3,3 +3,10 @@
 
 @use "error";
 @use "public_top";
+@use "header";
+@use "body";
+
+.title-custom{
+  background-color: #9e9e9e;
+  color: #e6e2d1;
+}
