@@ -7,6 +7,22 @@
 
       <h5 class="ml-5 mb-5"><span class="title-custom px-4">新規商品登録</span></h5>
 
+      <!--ジャンル新規登録欄（ポップアップ表示）-->
+      <div class="col-8 mx-auto form-group" id="new-genre-form"
+           style="display: none; position: absolute; top: 32%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(0, 0, 0, 0.6); padding: 35px; z-index: 9999;">
+        <table class="table table-borderless">
+            <tr>
+              <td>
+                <%= form_with model: @genre, url: admin_genres_path do |f| %>
+                  <%= f.text_field :name, placeholder: "新規ジャンル名", class: "form-control" %><br>
+                  <p class="text-white"> ※作成をやめる場合、以下のジャンルをお選びください</p>
+                  <%= f.submit "ジャンル作成", class:"btn btn-primary" %>
+                <% end %>
+              </td>
+            </tr>
+        </table>
+      </div>
+
       <div class="col-8 mx-auto form-group">
         <%= form_with model: [:admin, @item], url: admin_items_path do |f| %>
           <!--新規商品情報入力フォーム-->
@@ -21,11 +37,14 @@
             </tr>
             <tr>
               <td>商品説明</td>
-              <td><%= f.text_area :description, placeholder: "ここに説明文を記述します", class: "form-control" %></td>
+              <td><%= f.text_area :description, placeholder: "ここに説明文を記述します", class: "form-control", rows: "5%" %></td>
             </tr>
             <tr>
               <td>ジャンル</td>
-              <td><%= f.collection_select :genre_id, @genres, :id, :name, { prompt: "-- 選択してください --" }, {required: true, class: "form-control"} %></td>
+              <td>
+                <%= f.select :genre_id, options_for_select([["新しくジャンルを作成する", "new"]].concat(@genres.map { |genre| [genre.name, genre.id] })),
+                  { include_blank: "-- 選択してください --" }, {required: true, class: "form-control", id: "genre-select" } %>
+              </td>
             </tr>
             <tr>
               <td>税抜価格</td>
@@ -51,3 +70,27 @@
     </div>
   </div>
 </div>
+
+<!--「新しくジャンルを作成する」の選択時に発火-->
+<script>
+  $(document).ready(function() {
+    var genreSelect = $("#genre-select");
+    var newGenreForm = $("#new-genre-form");
+
+    genreSelect.on("change", function() {
+      if (genreSelect.val() === "new") {
+        slideDown(newGenreForm);
+      } else {
+        slideUp(newGenreForm);
+      }
+    });
+
+    function slideDown(element) {
+      element.fadeIn(300);
+    }
+
+    function slideUp(element) {
+      element.fadeOut(300);
+    }
+  });
+</script>

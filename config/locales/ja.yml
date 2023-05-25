@@ -42,3 +42,10 @@
           name: "商品名"
           description: "商品説明"
           price: "価格"
+          genre: "ジャンル"
+      errors:
+        models:
+          item:
+            attributes:
+              genre:
+                required: "が正しく選択されていません。"
