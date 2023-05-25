@@ -1,56 +1,52 @@
 <div class="container my-5">
   <div class="row">
     <div class="col-9 mx-auto">
-      <h5 class="font-weight-bold"><span class="bg-light px-4">注文履歴詳細</span></h5>
+      <h5><span class="title-custom px-4">注文履歴詳細</span></h5>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-9">
+    <div class="col-8">
       <b>注文情報</b>
-      <div class="table-responsive">
+      <div class="table-responsive table-bordered table-colored-turn">
         <table class="table">
           <tbody>
             <tr>
-              <td class="pl-5">注文日</td>
-              <td><%= l @order.created_at, format: :short %></td>
+              <td width=30%>注文日</td>
+              <td width=70%><%= l @order.created_at, format: :short %></td>
             </tr>
             <tr>
-              <td class="pl-5">配送先</td>
+              <td>配送先</td>
               <td><%= '〒' + @order.postal_code %><br><%= @order.address %><br><%= @order.name %></td>
             </tr>
             <tr>
-              <td class="pl-5">支払方法</td>
+              <td>支払方法</td>
               <td><%= Order.payment_methods_i18n[@order.payment_method] %></td>
             </tr>
             <tr>
-              <td class="pl-5">ステータス</td>
+              <td>ステータス</td>
               <td><%= Order.statuses_i18n[@order.status] %></td>
-            </tr>
-            <tr>
-              <td width=30%></td>
-              <td width=70%></td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <div class="col-3">
+    <div class="col-4">
       <b>請求情報</b>
-      <table class="table">
+      <table class="table table-bordered table-colored-turn">
         <tbody>
           <tr>
             <td>商品合計</td>
-            <td class="text-right pr-5"><%= (@order.total_cost-@order.shipping_cost).to_s(:delimited) %></td>
+            <td class="text-right pr-4"><%= (@order.total_cost-@order.shipping_cost).to_s(:delimited) %></td>
           </tr>
           <tr>
             <td>配送料</td>
-            <td class="text-right pr-5"><%= @order.shipping_cost.to_s(:delimited) %></td>
+            <td class="text-right pr-4"><%= @order.shipping_cost.to_s(:delimited) %></td>
           </tr>
           <tr>
             <td><b>ご請求額</b></td>
-            <td class="text-right pr-5"><%= @order.total_cost.to_s(:delimited) %></td>
+            <td class="text-right pr-4"><%= @order.total_cost.to_s(:delimited) %></td>
           </tr>
         </tbody>
       </table>
@@ -58,22 +54,22 @@
   </div>
 
   <div class="row">
-    <div class="col-9">
+    <div class="col-8">
       <b>注文内容</b>
-      <table class="table">
+      <table class="table table-bordered table-colored">
         <thead>
           <th width=40% >商品</th>
           <th width=20% >単価（税込）</th>
-          <th width=20% >個数</th>
-          <th width=20% >小計</th>
+          <th width=15% >個数</th>
+          <th width=25% >小計</th>
         </thead>
         <tbody>
           <% @order.order_details.each do |order_detail| %>
             <tr>
               <td class="pl-5"><%= order_detail.item.name %></td>
-              <td class="text-right pr-5"><%= order_detail.price.to_s(:delimited) %></td>
-              <td class="text-right pr-5"><%= order_detail.quantity.to_s(:delimited) %></td>
-              <td class="text-right pr-5"><%= order_detail.sub_total.to_s(:delimited) %></td>
+              <td class="text-right pr-4"><%= order_detail.price.to_s(:delimited) %></td>
+              <td class="text-right pr-4"><%= order_detail.quantity.to_s(:delimited) %></td>
+              <td class="text-right pr-4"><%= order_detail.sub_total.to_s(:delimited) %></td>
             </tr>
           <% end %>
         </tbody>

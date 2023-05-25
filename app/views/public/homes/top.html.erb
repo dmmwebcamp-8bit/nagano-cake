@@ -1,3 +1,5 @@
+<%= render 'top_animation' %>
+
 <div class="container my-5">
   <div class="row">
 
@@ -5,7 +7,7 @@
     <%= render 'sidebar', genres: @genres %>
 
     <!--メイン部分-->
-    <div class="col-9 offset-1">
+    <div class="col-9">
       <!--メイン画像-->
       <%= render 'slick' %>
 
@@ -15,20 +17,24 @@
       <% end %>
 
       <!--商品群-->
-      <div class="h2 font-weight-bold mt-4">新着商品</div>
-      <div class="items d-flex mx-4">
+      <div class="h2 mt-4"><span class="title-custom px-4">新着商品</span></div>
+
+      <div class="items dw-100">
         <!--１つの行に４商品を表示する-->
         <div class="row w-100">
           <% @items.each do |item| %>
             <!--１商品-->
-            <div class="col-3 mt-3", style="padding-left: 0px">
-              <%= link_to item_path(item.id) do %>
-                <div class="d-flex align-items-center" style="width: 180px; height: 180px;">
-                  <%= image_tag item.get_image(180, 180) %>
+            <div class="col-3">
+              <div class="item my-3">
+                <%= link_to item_path(item.id) do %>
+                  <div class="item-image">
+                    <%= image_tag item.get_image(180, 180), class: "mx-auto" %>
+                  </div>
+                <% end %>
+                <div class="item-caption pl-2">
+                  <%= item.name %><br>¥<%= number_with_delimiter(item.price) %>
                 </div>
-              <% end %><br>
-              <b><%= item.name %></b><br>
-              <b>¥<%= number_with_delimiter(item.price) %></b>
+              </div>
             </div>
           <% end %>
         </div>

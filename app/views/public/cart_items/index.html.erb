@@ -2,34 +2,34 @@
   <div class="row">
     <div class="col-11 mx-auto">
       <div class="row align-items-center justify-content-between">
-        <h5 class="font-weight-bold"><span class="bg-light px-4">ショッピングカート</span></h5>
+        <h5><span class="title-custom px-4">ショッピングカート</span></h5>
         <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, class: "btn btn-danger"%>
       </div>
 
       <!--カート内商品一覧-->
       <div class="table-responsive">
-        <table class="table mt-4">
+        <table class="table table-bordered table-colored mt-4">
           <thead>
             <th width=40% colspan=2>商品名</th>
-            <th width=15% >単価(税込)</th>
+            <th width=12% >単価(税込)</th>
             <th width=16% >数量</th>
-            <th width=10% >小計</th>
-            <th width=15% ></th>
+            <th width=13% >小計</th>
+            <th width=11% ></th>
           </thead>
           <tbody>
             <% @cart_items.each do |cart_item|%>
               <tr>
-                <td class="align-middle"><%= image_tag cart_item.item.get_image(80,40) %></td>
-                <td class="align-middle"><%= cart_item.item.name %></td>
-                <td class="align-middle text-right pr-5"><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
-                <td class="align-middle">
+                <td><%= image_tag cart_item.item.get_image(80,40) %></td>
+                <td><%= cart_item.item.name %></td>
+                <td class="text-right pr-4"><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
+                <td>
                   <%= form_with model: cart_item, class: "form-inline" do |f| %>
                     <%= f.select :amount, [*1..[cart_item.amount,10].max()], {}, {class: 'form-control'} %>
                     <%= f.submit '変更', class: 'btn btn-success ml-2' %>
                   <% end %>
                 </td>
-                <td class="align-middle text-right pr-4"><%= cart_item.subtotal.to_s(:delimited) %></td>
-                <td class="align-middle"><%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, class: "btn btn-danger" %></td>
+                <td class="text-right pr-4"><%= cart_item.subtotal.to_s(:delimited) %></td>
+                <td class="text-center"><%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, class: "btn btn-danger" %></td>
               </tr>
               <% @total += cart_item.subtotal %>
             <% end %>
@@ -43,10 +43,10 @@
           <%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %>
         </div>
         <div class="col-3">
-          <table class="table">
+          <table class="table table-bordered table-colored-turn">
             <tbody>
-              <td>合計金額</td>
-              <td><%= @total.to_s(:delimited) %></td>
+              <td width= 47%>合計金額</td>
+              <td width= 53% class="text-right pr-4"><%= @total.to_s(:delimited) %></td>
             </tbody>
           </table>
         </div>

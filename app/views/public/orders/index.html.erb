@@ -1,13 +1,13 @@
 <div class="container my-5">
   <div class="row">
     <div class="col-9 mx-auto mb-4">
-      <h5 class="font-weight-bold"><span class="bg-light px-4">注文履歴一覧</span></h5>
+      <h5><span class="title-custom px-4">注文履歴一覧</span></h5>
     </div>
   </div>
 
   <div class="row">
     <div class="col mx-auto">
-      <table class="table">
+      <table class="table table-bordered table-colored">
         <thead>
           <tr>
             <th>注文日</th>
@@ -21,20 +21,18 @@
         <tbody>
           <% @orders.each do |order| %>
             <tr>
-              <td><%= order.created_at.strftime("%Y/%m/%d") %></td>
+              <td><%= l order.created_at, format: :short %></td>
               <td><%= '〒' + order.postal_code %><br><%= order.address %><br><%= order.name %></td>
               <td>
                 <table class="table table-sm table-borderless">
-                  <tbody>
-                    <% order.order_details.each do |order_detail| %>
-                      <tr><td><%= order_detail.item.name %></td></tr>
-                    <% end %>
-                  </tbody>
+                  <% order.order_details.each do |order_detail| %>
+                    <tr><td><%= order_detail.item.name %></td></tr>
+                  <% end %>
                 </table>
               </td>
-              <td><%= order.total_cost.to_s(:delimited) %> 円</td>
-              <td><%= Order.statuses_i18n[order.status] %></td>
-              <td><%= link_to "表示する", order_path(order.id), class: "btn btn-primary"%></td>
+              <td class="text-right pr-4"><%= order.total_cost.to_s(:delimited) %> 円</td>
+              <td class="text-center"><%= Order.statuses_i18n[order.status] %></td>
+              <td class="text-center"><%= link_to "表示する", order_path(order.id), class: "btn btn-primary"%></td>
             </tr>
           <% end %>
         </tbody>

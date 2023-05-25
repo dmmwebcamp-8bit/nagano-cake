@@ -5,13 +5,11 @@
     <%= render 'public/homes/sidebar', genres: @genres %>
 
     <!--メイン部分-->
-    <div class="col-9 offset-1">
-
+    <div class="col-9">
       <div class="row">
         <div class="col-5">
           <%= image_tag @item.get_image(200, 200) %>
         </div>
-
         <!--商品情報-->
         <div class="col-7 form-group">
           <%= form_with model: @cart_item, url: cart_items_path do |f| %>

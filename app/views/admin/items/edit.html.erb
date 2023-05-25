@@ -5,11 +5,10 @@
       <!--エラーメッセージ-->
       <%= render 'layouts/errors', obj: @item %>
 
-      <h5 class="font-weight-bold ml-5 mb-5"><span class="bg-light px-4">商品編集</span></h5>
+      <h5 class="ml-5 mb-5"><span class="title-custom px-4">商品編集</span></h5>
 
-      <%= form_with model: [:admin, @item], url: admin_item_path do |f| %>
-        <div class="col-8 mx-auto form-group">
-
+      <div class="col-8 mx-auto form-group">
+        <%= form_with model: [:admin, @item], url: admin_item_path do |f| %>
           <!--商品情報入力フォーム-->
           <table class="table table-borderless">
             <tr>
@@ -22,7 +21,7 @@
             </tr>
             <tr>
               <td>商品説明</td>
-              <td><%= f.text_area :description, placeholder: "ここに説明文を記述します", class: "form-control" %></td>
+              <td><%= f.text_area :description, placeholder: "ここに説明文を記述します", class: "form-control", rows: "5%" %></td>
             </tr>
             <tr>
               <td>ジャンル</td>
@@ -42,14 +41,12 @@
               </td>
             </tr>
           </table>
-
           <!--変更保存ボタン-->
           <div class="text-center">
             <%= f.submit "変更を保存", class: "btn btn-success btn-lg" %>
           </div>
-
-        </div>
-      <% end %>
+        <% end %>
+      </div>
 
     </div>
   </div>

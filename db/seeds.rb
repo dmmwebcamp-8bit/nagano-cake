@@ -6,11 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+puts "--------- create Admin"
 Admin.create!(
   email: ENV['ADMIN_EMAIL'],
   password: ENV['ADMIN_PASS']
 )
 
+puts "--------- create Customer"
 Customer.create!(
   [
     {
@@ -41,6 +43,7 @@ Customer.create!(
   )
 end
 
+puts "--------- create Address"
 Address.create!(
   [
     {
@@ -52,6 +55,7 @@ Address.create!(
   ]
 )
 
+puts "--------- create Genre"
 Genre.create!(
   [
     {
@@ -73,13 +77,14 @@ Genre.create!(
   ]
 )
 
+puts "--------- create Item"
 item = Item.create!(
   name: "イチゴミルフィーユ",
   description: "サクサクのパイ生地にフレッシュなイチゴを挟んだミルフィーユ。おあがりよ！",
   genre_id: 1,
   price: 1100
 )
-item.image.attach(io: File.open(Rails.root.join('app/assets/images/sample1.png')), filename: 'sample1.png')
+item.image.attach(io: File.open(Rails.root.join('db/samples/sample1.png')), filename: 'sample1.png')
 
 item = Item.create!(
   name: "マリトッツォ",
@@ -87,7 +92,7 @@ item = Item.create!(
   genre_id: 2,
   price: 1000
 )
-item.image.attach(io: File.open(Rails.root.join('app/assets/images/sample2.png')), filename: 'sample2.png')
+item.image.attach(io: File.open(Rails.root.join('db/samples/sample2.png')), filename: 'sample2.png')
 
 item = Item.create!(
   name: "フォンダンショコラ",
@@ -95,7 +100,7 @@ item = Item.create!(
   genre_id: 1,
   price: 2500
 )
-item.image.attach(io: File.open(Rails.root.join('app/assets/images/sample3.png')), filename: 'sample3.png')
+item.image.attach(io: File.open(Rails.root.join('db/samples/sample3.png')), filename: 'sample3.png')
 
 item = Item.create!(
   name: "チョコムース",
@@ -103,7 +108,7 @@ item = Item.create!(
   genre_id: 1,
   price: 500
 )
-item.image.attach(io: File.open(Rails.root.join('app/assets/images/sample4.png')), filename: 'sample4.png')
+item.image.attach(io: File.open(Rails.root.join('db/samples/sample4.png')), filename: 'sample4.png')
 
 item = Item.create!(
   name: "パンナコッタ",
@@ -111,7 +116,7 @@ item = Item.create!(
   genre_id: 3,
   price: 300
 )
-item.image.attach(io: File.open(Rails.root.join('app/assets/images/sample5.png')), filename: 'sample5.png')
+item.image.attach(io: File.open(Rails.root.join('db/samples/sample5.png')), filename: 'sample5.png')
 
 item = Item.create!(
   name: "フロランタン",
@@ -119,7 +124,7 @@ item = Item.create!(
   genre_id: 2,
   price: 250
 )
-item.image.attach(io: File.open(Rails.root.join('app/assets/images/sample6.png')), filename: 'sample6.png')
+item.image.attach(io: File.open(Rails.root.join('db/samples/sample6.png')), filename: 'sample6.png')
 
 item = Item.create!(
   name: "月餅",
@@ -127,7 +132,7 @@ item = Item.create!(
   genre_id: 2,
   price: 500
 )
-item.image.attach(io: File.open(Rails.root.join('app/assets/images/sample7.png')), filename: 'sample7.png')
+item.image.attach(io: File.open(Rails.root.join('db/samples/sample7.png')), filename: 'sample7.png')
 
 item = Item.create!(
   name: "マンゴープリン",
@@ -135,7 +140,7 @@ item = Item.create!(
   genre_id: 3,
   price: 100
 )
-item.image.attach(io: File.open(Rails.root.join('app/assets/images/sample8.png')), filename: 'sample8.png')
+item.image.attach(io: File.open(Rails.root.join('db/samples/sample8.png')), filename: 'sample8.png')
 
 item = Item.create!(
   name: "プリン",
@@ -143,7 +148,7 @@ item = Item.create!(
   genre_id: 3,
   price: 600
 )
-item.image.attach(io: File.open(Rails.root.join('app/assets/images/sample9.png')), filename: 'sample9.png')
+item.image.attach(io: File.open(Rails.root.join('db/samples/sample9.png')), filename: 'sample9.png')
 
 item = Item.create!(
   name: "タイ焼きパフェ",
@@ -151,7 +156,7 @@ item = Item.create!(
   genre_id: 1,
   price: 1500
 )
-item.image.attach(io: File.open(Rails.root.join('app/assets/images/sample10.png')), filename: 'sample10.png')
+item.image.attach(io: File.open(Rails.root.join('db/samples/sample10.png')), filename: 'sample10.png')
 
 item = Item.create!(
   name: "バター飴",
@@ -159,7 +164,7 @@ item = Item.create!(
   genre_id: 4,
   price: 6000
 )
-item.image.attach(io: File.open(Rails.root.join('app/assets/images/sample11.png')), filename: 'sample11.png')
+item.image.attach(io: File.open(Rails.root.join('db/samples/sample11.png')), filename: 'sample11.png')
 
 item = Item.create!(
   name: "グラブジャムン",
@@ -167,9 +172,9 @@ item = Item.create!(
   genre_id: 1,
   price: 700
 )
-item.image.attach(io: File.open(Rails.root.join('app/assets/images/sample12.png')), filename: 'sample12.png')
+item.image.attach(io: File.open(Rails.root.join('db/samples/sample12.png')), filename: 'sample12.png')
 
-
+puts "--------- create CartItem"
 CartItem.create!(
   [
     {
@@ -185,6 +190,7 @@ CartItem.create!(
   ]
 )
 
+puts "--------- create Order"
 Order.create!(
   [
     {
@@ -199,6 +205,7 @@ Order.create!(
   ]
 )
 
+puts "--------- create OrderDetail"
 OrderDetail.create!(
   [
     {
@@ -217,3 +224,5 @@ OrderDetail.create!(
     }
   ]
 )
+
+puts "--------- all END"
