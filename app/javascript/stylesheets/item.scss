@@ -1,0 +1,12 @@
+.item{
+  width: 180px;
+  background-color: rgba(156,126,166,0.2);
+  box-shadow: -9px 0px 0px 1px rgba(10,10,10,0.02), 1px 3px 10px 3px rgba(156,126,166,0.42);
+  .item-image{
+    width: 180px;
+    height: 180px;
+  }
+  .item-caption{
+    font-weight: bold;
+  }
+}

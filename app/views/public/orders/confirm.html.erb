@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-9 mx-auto">
       <div class="row align-items-center">
-        <h5 class="font-weight-bold"><span class="bg-light px-4">注文情報確認</span></h5>
+        <h5><span class="title-custom px-4">注文情報確認</span></h5>
       </div>
     </div>
   </div>
@@ -10,7 +10,7 @@
   <div class="row">
     <div class="col-8">
       <div class="table-responsive">
-        <table class="table">
+        <table class="table table-bordered table-colored">
           <thead>
             <th colspan=2>商品名</th>
             <th width=17%>単価(税込)</th>
@@ -20,11 +20,11 @@
           <tbody>
             <% @cart_items.each do |cart_item|%>
               <tr>
-                <td class="align-middle"><%= image_tag cart_item.item.get_image(80,40) %></td>
-                <td class="align-middle"><%= cart_item.item.name %></td>
-                <td class="align-middle text-right pr-5"><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
-                <td class="align-middle text-right pr-5"><%= cart_item.amount %></td>
-                <td class="align-middle text-right pr-5"><%= cart_item.subtotal.to_s(:delimited) %></td>
+                <td><%= image_tag cart_item.item.get_image(80,40) %></td>
+                <td><%= cart_item.item.name %></td>
+                <td class="text-right pr-4"><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
+                <td class="text-right pr-4"><%= cart_item.amount %></td>
+                <td class="text-right pr-4"><%= cart_item.subtotal.to_s(:delimited) %></td>
               </tr>
               <% @total += cart_item.subtotal %>
             <% end %>
@@ -34,19 +34,19 @@
     </div>
 
     <div class="col-3">
-      <table class="table">
+      <table class="table table-bordered table-colored-turn">
         <tbody>
           <tr>
             <td>送料</td>
-            <td class="text-right pr-5"><%= @shipping_cost.to_s(:delimited) %></td>
+            <td class="text-right pr-4"><%= @shipping_cost.to_s(:delimited) %></td>
           </tr>
           <tr>
             <td>商品合計</td>
-            <td class="text-right pr-5"><%= @total.to_s(:delimited) %></td>
+            <td class="text-right pr-4"><%= @total.to_s(:delimited) %></td>
           </tr>
           <tr>
             <td>請求合計</td>
-            <td class="text-right pr-5"><%= (@shipping_cost + @total).to_s(:delimited) %></td>
+            <td class="text-right pr-4"><%= (@shipping_cost + @total).to_s(:delimited) %></td>
           </tr>
         </tbody>
       </table>

@@ -5,7 +5,7 @@
       <!--エラーメッセージ-->
       <%= render "layouts/errors", obj: @customer %>
 
-      <h5 class="font-weight-bold ml-5 mb-5"><span class="bg-light px-4">新規会員登録</span></h5>
+      <h5 class="ml-5 mb-5"><span class="title-custom px-4">新規会員登録</span></h5>
 
       <!--新規登録フォーム-->
       <%= form_with model: @customer, url: customer_registration_path do |f| %>
@@ -65,8 +65,7 @@
 
       <!--ログインリンク-->
       <div class="ml-5">
-        <h5 class="font-weight-bold mb-3"><span class="bg-light px-4">既に登録済みの方</span></h5>
-
+        <h5 class="font-weight-bold mb-3"><span class="title-custom px-4">既に登録済みの方</span></h5>
         <div class="ml-5"><%= link_to "こちら", new_customer_session_path %> からログインしてください。</div>
       </div>
 

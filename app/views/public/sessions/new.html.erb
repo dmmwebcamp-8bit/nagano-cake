@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-9 mx-auto">
 
-      <h5 class="font-weight-bold"><span class="bg-light px-4">ログイン</span></h5>
+      <h5><span class="title-custom px-4">ログイン</span></h5>
 
       <!--エラーメッセージ-->
       <%= render "layouts/errors", obj: @customer %>
@@ -10,7 +10,7 @@
       <!--会員ログインフォーム-->
       <div class="row">
         <div class="col-11 mx-auto my-4">
-          <h6 class="font-weight-bold mb-4"><span class="bg-light px-4">会員の方はこちらからログイン</span></h6>
+          <h6 class="font-weight-bold mb-4"><span class="title-custom px-4">会員の方はこちらからログイン</span></h6>
 
           <%= form_with model: @customer, url: customer_session_path do |f| %>
             <div class="form-group ml-5">
@@ -36,7 +36,7 @@
       <!--新規登録リンク-->
       <div class="row">
         <div class="col-11 mx-auto">
-          <h6 class="font-weight-bold mb-3"><span class="bg-light px-4">会員登録がお済みでない方</span></h6>
+          <h6 class="font-weight-bold mb-3"><span class="title-custom px-4">会員登録がお済みでない方</span></h6>
 
           <div class="text-center"><%= link_to "こちら", new_customer_registration_path %> から新規登録を行ってください。</div>
         </div>

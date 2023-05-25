@@ -5,9 +5,9 @@
       <!--エラーメッセージ-->
       <%= render 'layouts/errors', obj: @item %>
 
-      <h5 class="font-weight-bold ml-5 mb-5"><span class="bg-light px-4">新規商品登録</span></h5>
+      <h5 class="ml-5 mb-5"><span class="title-custom px-4">新規商品登録</span></h5>
 
-      <!--ジャンル新規登録欄-->
+      <!--ジャンル新規登録欄（ポップアップ表示）-->
       <div class="col-8 mx-auto form-group" id="new-genre-form"
            style="display: none; position: absolute; top: 32%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(0, 0, 0, 0.6); padding: 35px; z-index: 9999;">
         <table class="table table-borderless">
@@ -23,9 +23,8 @@
         </table>
       </div>
 
-      <%= form_with model: [:admin, @item], url: admin_items_path do |f| %>
-        <div class="col-8 mx-auto form-group">
-
+      <div class="col-8 mx-auto form-group">
+        <%= form_with model: [:admin, @item], url: admin_items_path do |f| %>
           <!--新規商品情報入力フォーム-->
           <table class="table table-borderless">
             <tr>
@@ -38,7 +37,7 @@
             </tr>
             <tr>
               <td>商品説明</td>
-              <td><%= f.text_area :description, placeholder: "ここに説明文を記述します", class: "form-control" %></td>
+              <td><%= f.text_area :description, placeholder: "ここに説明文を記述します", class: "form-control", rows: "5%" %></td>
             </tr>
             <tr>
               <td>ジャンル</td>
@@ -61,19 +60,18 @@
               </td>
             </tr>
           </table>
-
           <!--新規商品登録ボタン-->
           <div class="text-center">
             <%= f.submit "新規登録", class: "btn btn-success btn-lg" %>
           </div>
-
-        </div>
-      <% end %>
+        <% end %>
+      </div>
 
     </div>
   </div>
 </div>
 
+<!--「新しくジャンルを作成する」の選択時に発火-->
 <script>
   $(document).ready(function() {
     var genreSelect = $("#genre-select");

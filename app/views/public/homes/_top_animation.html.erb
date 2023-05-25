@@ -1,0 +1,23 @@
+<div id="top-fadeout">
+  <div id="logo-clip">
+    <%= image_tag "top_animation/nagano_logo1-1" %>
+  </div>
+  <div id="logo-clip-in">
+    <%= image_tag "top_animation/nagano_logo1-2" %>
+  </div>
+</div>
+
+<script>
+  $(window).on('turbolinks:load',function(){
+    $("#logo-clip-in").animate(
+      {
+        top: "50%",
+        left: "50%"
+      },
+      900, "swing"
+    );
+    $("#top-fadeout").delay(1000).fadeOut('slow');
+    $("#logo-clip").delay(1000).fadeOut('slow');
+    $("#logo-clip-in").delay(1000).fadeOut('slow');
+  });
+</script>

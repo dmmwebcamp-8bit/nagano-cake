@@ -74,3 +74,28 @@
 #close_btn::after {
   transform: translate(-50%,-50%) rotate(-45deg);
 }
+
+/*========= ローディング画面のためのCSS ===============*/
+#top-fadeout {
+  position: fixed;
+  top: 0;
+  right:0;
+  bottom:0;
+  left: 0;
+  background: #D9B2B0;
+  z-index: 9999999;
+}
+
+#logo-clip {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#logo-clip-in {
+  position: absolute;
+  top: calc(50% + 50px * tan(60deg));
+  left: calc(50% + 50px);
+  transform: translate(-50%, -50%);
+}
