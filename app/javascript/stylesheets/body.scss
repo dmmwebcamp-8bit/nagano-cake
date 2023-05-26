@@ -2,3 +2,89 @@ body{
   background-color: #e6e2d1;
   font-family: 'Shippori Mincho B1', serif;
 }
+
+
+.btn-attention {
+  padding: 5px;
+  background: #C7959F;
+  color: #fff;
+  text-align: center;
+  border: none;
+  &:hover {
+    opacity: .6;
+    color: #fff;
+  }
+  &:active {
+    opacity: .6;
+    color: #fff;
+  }
+}
+
+
+// 濃いピンク
+.btn-attention {
+  padding: 5px;
+  background: #C7959F;
+  color: #fff;
+  text-align: center;
+  border: none;
+  &:hover {
+    opacity: .6;
+    color: #fff;
+  }
+  &:active {
+    opacity: .6;
+    color: #fff;
+  }
+}
+
+// 緑
+.btn-green {
+  padding: 5px;
+  background: #95C7BD;
+  color: #fff;
+  text-align: center;
+  border: none;
+  &:hover {
+    opacity: .6;
+    color: #fff;
+  }
+  &:active {
+    opacity: .6;
+    color: #fff;
+  }
+}
+
+// 薄ピンク
+.btn-usually {
+  padding: 5px;
+  background: #D9B2B0;
+  color: #fff;
+  text-align: center;
+  border: none;
+  &:hover {
+    opacity: .6;
+    color: #fff;
+  }
+  &:active {
+    opacity: .6;
+    color: #fff;
+  }
+}
+
+// 紫
+.btn-point {
+  padding: 5px;
+  background: #9C7EA6;
+  color: #fff;
+  text-align: center;
+  border: none;
+  &:hover {
+    opacity: .6;
+    color: #fff;
+  }
+  &:active {
+    opacity: .6;
+    color: #fff;
+  }
+}

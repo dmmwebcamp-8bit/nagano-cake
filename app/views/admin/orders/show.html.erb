@@ -29,7 +29,7 @@
           <td>
             <%= form_with model:[:admin,@order], class: "form-inline" do |f| %>
               <%= f.select :status, Order.statuses.keys.map { |k| [t("enums.order.status.#{k}"), k] },{},{class: "form-control"} %>
-              <%= f.submit "更新", class: "ml-2 btn btn-success" %>
+              <%= f.submit "更新", class: "ml-2 btn btn-usually" %>
             <% end %>
           </td>
         </tr>
@@ -62,7 +62,7 @@
               <td>
                 <%= form_with model: [:admin, @order, order_detail], class: "form-inline" do |f| %>
                   <%= f.select :making_status ,OrderDetail.making_statuses.keys.map { |k| [t("enums.order_detail.making_status.#{k}"), k] },{},{class: "form-control"} %>
-                  <%= f.submit "更新", class: "btn btn-success ml-2" %>
+                  <%= f.submit "更新", class: "btn btn-usually ml-2" %>
                 <% end %>
               </td>
             </tr>
