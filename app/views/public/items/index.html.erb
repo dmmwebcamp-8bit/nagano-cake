@@ -11,6 +11,9 @@
       <% if params[:genre_id] %>
         <span class="h2 title-custom px-4"><%= @genre.name %>一覧</span>
         (全<%= Item.where(genre_id: params[:genre_id], is_active: true).count %>件)
+      <% elsif params[:search] %>
+        <span class="h2 title-custom px-4">検索結果"<%=@keyword %>"</span>
+      　(全<%= @items_all.count  %>件)
       <% else %>
         <span class="h2 title-custom px-4">商品一覧</span>
         (全<%= Item.where(is_active: true).count %>件)

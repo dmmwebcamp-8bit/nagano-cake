@@ -14,7 +14,7 @@
           <tr>
             <td class="align-middle">ジャンル名</td>
             <td><%= f.text_field :name, placeholder: "ジャンル名", class:"form-control" %></td>
-            <td><%= f.submit "新規登録", class:"btn btn-block btn-success font-weight-bold ml-3" %></td>
+            <td><%= f.submit "新規登録", class:"btn btn-block btn-usually font-weight-bold ml-3" %></td>
           </tr>
         </table>
       <% end %>
@@ -39,7 +39,7 @@
                       <span style="color: gray;" >無効</span>
                     <% end %>
                   </td>
-                  <td><%= link_to "編集する", edit_admin_genre_path(genre), class:"col-7 offset-3 btn btn-success font-weignt-bold" %></td>
+                  <td><%= link_to "編集する", edit_admin_genre_path(genre), class:"col-7 offset-3 btn btn-usually font-weignt-bold" %></td>
                 </tr>
               <% end %>
             </tbody>

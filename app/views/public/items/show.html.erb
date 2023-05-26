@@ -22,7 +22,7 @@
             <div class="row mt-4">
               <%= f.select :amount, [*1..10], {include_blank: '個数選択'},{required: true, class: "col-4 form-control"} %>
               <%= f.hidden_field :item_id, :value => @item.id %>
-              <%= f.submit "カートに入れる", class: "col-4 offset-1 btn btn-success font-weight-bold" %>
+              <%= f.submit "カートに入れる", class: "col-4 offset-1 btn btn-usually font-weight-bold" %>
             </div>
           <% end %>
         </div>

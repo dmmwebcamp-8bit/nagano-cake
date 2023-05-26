@@ -39,7 +39,7 @@
             </div>
           </div>
           <div class="row mt-2 w-100 justify-content-end">
-            <%= form_with url: "#",class: "form-inline search_container" do |f| %>
+            <%= form_with url: items_path, method: :get, local: true, class: "form-inline search_container" do |f| %>
               <%= f.text_field :search, placeholder: "Search", class: "form-control"%>
             <% end %>
           </div>

@@ -23,4 +23,9 @@ class Item < ApplicationRecord
     (price * 1.1).floor
   end
 
+  def self.search(search)
+      return all unless search
+      where(['name LIKE ?', "%#{search}%"]).or(where('description LIKE?', "%#{search}%"))
+  end
+
 end

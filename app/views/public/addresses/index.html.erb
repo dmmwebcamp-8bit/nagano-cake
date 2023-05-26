@@ -27,7 +27,7 @@
                 <td>宛名</td>
                 <td><%= f.text_field :name, placeholder: "令和道子", class:"form-control" %></td>
                 <td></td>
-                <td><%= f.submit "新規登録", class:"btn btn-success px-5 font-weight-bold" %></td>
+                <td><%= f.submit "新規登録", class:"btn btn-usually px-5 font-weight-bold" %></td>
               </tr>
             </table>
           </div>
@@ -51,9 +51,9 @@
                   <td><%= address.address %></td>
                   <td><%= address.name %></td>
                   <td class="text-center">
-                    <%= link_to "編集する", edit_address_path(address), class:"btn btn-success font-weight-bold mr-2" %>
+                    <%= link_to "編集する", edit_address_path(address), class:"btn btn-usually font-weight-bold mr-2" %>
                     <%= link_to "削除する", address_path(address), method: :delete,
-                        "data-confirm" => "本当に消しますか？", class:"btn btn-danger font-weight-bold" %>
+                        "data-confirm" => "本当に消しますか？", class:"btn btn-point font-weight-bold" %>
                   </td>
                 </tr>
               </tbody>
