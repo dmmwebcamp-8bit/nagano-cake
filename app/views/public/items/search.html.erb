@@ -1,0 +1,51 @@
+<div class="container my-5">
+  <div class="row">
+
+    <!--サイドバー部分-->
+    <%= render 'public/homes/sidebar', genres: @genres %>
+
+    <!--メイン部分-->
+    <div class="col-9">
+      <!--商品群-->
+      <!--ジャンルで絞り込む時 else 全ての商品を見る時-->
+      <span>検索結果<%=@keyword %></span>(全<%= @items_all.count  %>件)
+
+      <div class="items d-flex ml-3">
+        <% if @items.empty? %>
+          <p class="mt-4">該当する商品はありません</p>
+        <% else %>
+          <!--１つの行に４商品を表示する-->
+          <div class="row w-100">
+            <% @items.each do |item| %>
+
+              <!--１商品-->
+              <div class="col-3">
+                <div class="item my-3">
+                  <%= link_to item_path(item.id) do %>
+                    <div class="item-image">
+                      <%= image_tag item.get_image(180, 180), class: "mx-auto" %>
+                    </div>
+                  <% end %>
+                  <div class="item-caption pl-2">
+                    <%= item.name %><br>¥<%= number_with_delimiter(item.price) %>
+                  </div>
+                </div>
+              </div>
+
+            <% end %>
+          </div>
+        <% end %>
+
+      </div>
+
+      <!--ページネーションの設定-->
+      <div class="row">
+        <div class="mx-auto mt-4">
+          <%= paginate @items, theme: 'bootstrap-5' %>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
