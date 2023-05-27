@@ -12,6 +12,7 @@ class Admin::GenresController < Admin::ApplicationController
         flash[:notice] = "ジャンルの作成に成功しました"
         redirect_to request.referer
       else
+        flash[:notice] = "ジャンルの作成に成功しました"
         redirect_to admin_genres_path
       end
     else
@@ -27,6 +28,7 @@ class Admin::GenresController < Admin::ApplicationController
   def update
     @genre = Genre.find(params[:id])
     if @genre.update(genre_params)
+      flash[:notice] = "ジャンル情報の変更に成功しました"
       redirect_to admin_genres_path
     else
       render :edit
