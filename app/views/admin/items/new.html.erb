@@ -1,0 +1,132 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-10 mx-auto">
+
+      <!--エラーメッセージ-->
+      <%= render 'layouts/errors', obj: @item %>
+
+      <h5 class="ml-5 mb-5"><span class="title-custom px-4">新規商品登録</span></h5>
+
+      <!--ジャンル新規登録欄（ポップアップ表示）-->
+      <div class="col-8 mx-auto form-group" id="new-genre-form"
+           style="display: none; position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(0, 0, 0, 0.6); padding: 30px; z-index: 9999;">
+        <table class="table table-borderless">
+            <tr>
+              <td>
+                <%= form_with model: @genre, url: admin_genres_path, html: { class: "form-inline" } do |f| %>
+                  <%= f.text_field :name, placeholder: "新規ジャンル名", class: "form-control mr-2", style: "width: 70%" %>
+                  <%= f.submit "ジャンル作成", class:"btn btn-primary", style: "width: 25%" %><br>
+                  <p class="text-white pt-3"> ※作成をやめる場合、以下より再度ジャンルをお選びください</p>
+                <% end %>
+              </td>
+            </tr>
+        </table>
+      </div>
+
+      <div class="col-8 mx-auto form-group">
+        <%= form_with model: [:admin, @item], url: admin_items_path do |f| %>
+          <!--新規商品情報入力フォーム-->
+          <table class="table table-borderless">
+            <tr>
+              <td>商品画像</td>
+              <td>
+                <%= f.file_field :image, accept: "image/png, image/jpeg" %><br>
+                <!--プレビュー表示-->
+                <img class="mt-2" id="image-preview" src="#" alt="プレビュー" style="max-width: 150px; border: solid thin lightgray; border-radius: 5px;">
+              </td>
+            </tr>
+            <tr>
+              <td>商品名</td>
+              <td><%= f.text_field :name, placeholder: "商品名", class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td>商品説明</td>
+              <td><%= f.text_area :description, placeholder: "ここに説明文を記述します", class: "form-control", rows: "5%" %></td>
+            </tr>
+            <tr>
+              <td>ジャンル</td>
+              <td>
+                <%= f.select :genre_id, options_for_select([["新しくジャンルを作成する", "new"]].concat(@genres.map { |genre| [genre.name, genre.id] })),
+                  { include_blank: "-- 選択してください --" }, {required: true, class: "form-control", id: "genre-select" } %>
+              </td>
+            </tr>
+            <tr>
+              <td>税抜価格</td>
+              <td><%= f.text_field :price, placeholder: "1000", class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td>販売ステータス</td>
+              <td>
+                <%= f.radio_button :is_active, true, checked: true %>
+                <%= label_tag :is_active_true, "販売中" %>
+                <%= f.radio_button :is_active, false, class: "ml-3" %>
+                <%= label_tag :is_active_false, "販売停止中" %>
+              </td>
+            </tr>
+          </table>
+          <!--新規商品登録ボタン-->
+          <div class="text-center">
+            <%= f.submit "新規登録", class: "btn btn-usually btn-lg" %>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!--「新しくジャンルを作成する」の選択時に発火-->
+<script>
+  // HTMLドキュメントが読み込まれた後に実行される関数
+  $(document).ready(function() {
+    var genreSelect = $("#genre-select");
+    var newGenreForm = $("#new-genre-form");
+
+    // ジャンル選択の内容がチェンジされたときに実行する処理
+    genreSelect.on("change", function() {
+      if (genreSelect.val() === "new") {
+        slideDown(newGenreForm);
+      } else {
+        slideUp(newGenreForm);
+      }
+    });
+
+    // 引数で指定された要素をスライドダウンさせる処理
+    function slideDown(element) {
+      element.fadeIn(300);
+    }
+
+    //引数で指定された要素をスライドアップさせる処理
+    function slideUp(element) {
+      element.fadeOut(300);
+    }
+  });
+</script>
+
+<!--画像ファイルが選択された際に発火し、画像のプレビューを表示-->
+<script>
+  // 初期状態では非表示に
+  $("#image-preview").hide();
+
+  // 画像が選択された際に実行される関数
+  function showPreview(event) {
+    var file = event.target.files[0];
+    var reader = new FileReader();
+
+    // アップロードした画像をセットし、表示する
+    reader.onload = function(e) {
+      var previewElement = $("#image-preview");
+      previewElement.attr("src", e.target.result);
+      previewElement.show(); // 画像を表示する
+    }
+
+    // ファイルをデータURL形式で読み込む
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  }
+
+  // 再度別画像が読み込まれた時にプレビューを変更する
+  var fileInput = $("#item_image");
+  fileInput.on("change", showPreview);
+</script>

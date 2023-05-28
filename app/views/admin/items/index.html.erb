@@ -1,0 +1,60 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-10 mx-auto">
+
+      <div class="row">
+        <div class="col-10">
+           <h5 class="ml-5 mb-3"><span class="title-custom px-4">商品一覧</span></h5>
+        </div>
+
+        <!--新規登録ボタン-->
+        <div class="col-2 justify-content-end">
+          <%= link_to new_admin_item_path, class: "btn rounded-circle shadow-sm bg-light" do %>
+            <i class="fa-solid fa-plus fa-lg" style="color: #737373;"></i>
+          <% end %>
+        </div>
+      </div>
+
+      <!--各行の説明-->
+      <table class="table table-colored mt-4">
+        <thead>
+          <tr>
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>税込価格</th>
+            <th>ジャンル</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+
+        <!--商品一覧-->
+        <% @items.each do |item| %>
+          <tbody>
+            <tr>
+              <th><%= item.id %></th>
+              <th><%= link_to item.name, admin_item_path(item) %></th>
+              <th><%= number_with_delimiter(item.price) %></th>
+              <th><%= item.genre.name %></th>
+              <th>
+                <% if item.is_active %>
+                  <span style="color: green;">販売中</span>
+                <% else %>
+                  <span style="color: gray;" >販売停止中</span>
+                <% end %>
+              </th>
+            </tr>
+          </tbody>
+        <% end %>
+
+      </table>
+
+      <!--ページネーションの設定-->
+      <div class="row">
+        <div class="mx-auto">
+          <%= paginate @items, theme: 'bootstrap-5' %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

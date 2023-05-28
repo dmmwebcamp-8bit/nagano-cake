@@ -1,0 +1,48 @@
+<%= render 'top_animation' %>
+
+<div class="container my-5">
+  <div class="row">
+
+    <!--サイドバー部分-->
+    <%= render 'sidebar', genres: @genres %>
+
+    <!--メイン部分-->
+    <div class="col-9">
+      <!--メイン画像-->
+      <%= render 'slick' %>
+
+      <!--インフォメーション-->
+      <% unless customer_signed_in? %>
+        <%= render 'information' %>
+      <% end %>
+
+      <!--商品群-->
+      <div class="h2 mt-4"><span class="title-custom px-4">新着商品</span></div>
+
+      <div class="items dw-100">
+        <!--１つの行に４商品を表示する-->
+        <div class="row w-100">
+          <% @items.each do |item| %>
+            <!--１商品-->
+            <div class="col-3">
+              <div class="item my-3">
+                <%= link_to item_path(item.id) do %>
+                  <div class="item-image">
+                    <%= image_tag item.get_image(180, 180), class: "mx-auto" %>
+                  </div>
+                <% end %>
+                <div class="item-caption pl-2">
+                  <%= item.name %><br>¥<%= number_with_delimiter(item.with_tax_price) %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="mt-3 text-right">
+        <%= link_to "全ての商品を見る >", items_path %>
+      </div>
+    </div>
+
+  </div>
+</div>

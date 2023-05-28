@@ -1,0 +1,66 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-10 mx-auto">
+
+      <!--エラーメッセージ-->
+      <%= render 'layouts/errors', obj: @address %>
+
+      <h5 class="ml-5 mb-3"><span class="title-custom px-4">配送先登録 / 一覧</span></h5>
+
+        <!--新規配送先登録-->
+        <%= form_with model: @address do |f| %>
+          <div class="form-group">
+            <table class="table table-borderless mt-5">
+              <tr>
+                <td width="24%">郵便番号(ハイフンなし)</td>
+                <td width="24%"><%= f.text_field :postal_code, placeholder: "0000000", class:"form-control" %></td>
+                <td width="24%"></td>
+                <td width="24%"></td>
+                <td width="4%"></td>
+              </tr>
+              <tr>
+                <td>住所</td>
+                <td colspan="2"><%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", class:"form-control" %></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>宛名</td>
+                <td><%= f.text_field :name, placeholder: "令和道子", class:"form-control" %></td>
+                <td></td>
+                <td><%= f.submit "新規登録", class:"btn btn-usually px-5 font-weight-bold" %></td>
+              </tr>
+            </table>
+          </div>
+        <% end %>
+
+        <!--配送先一覧-->
+        <div class="form-group">
+          <table class="table table-bordered table-colored">
+            <thead>
+              <tr>
+                <td>郵便番号</td>
+                <td>住所</td>
+                <td>宛名</td>
+                <td></td>
+              </tr>
+            </thead>
+            <% @addresses.each do |address| %>
+              <tbody>
+                <tr>
+                  <td><%= address.postal_code %></td>
+                  <td><%= address.address %></td>
+                  <td><%= address.name %></td>
+                  <td class="text-center">
+                    <%= link_to "編集する", edit_address_path(address), class:"btn btn-usually font-weight-bold mr-2" %>
+                    <%= link_to "削除する", address_path(address), method: :delete,
+                        "data-confirm" => "本当に消しますか？", class:"btn btn-point font-weight-bold" %>
+                  </td>
+                </tr>
+              </tbody>
+            <% end %>
+          </table>
+        </div>
+
+    </div>
+  </div>
+</div>

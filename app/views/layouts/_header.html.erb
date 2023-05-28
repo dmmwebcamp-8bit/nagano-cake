@@ -1,0 +1,50 @@
+<header>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <div class="row w-100">
+        <div class="col-3">
+          <%= link_to root_path, class: 'nav-link nav-brand' do %>
+            <%= image_tag "nagano-logo.png" %>
+          <% end %>
+        </div>
+        <div class="col-9">
+          <div class="row w-100 justify-content-end">
+            <button class="navbar-toggler" style="color:#c7959f;" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon">a</span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+              <ul class="navbar-nav ml-5">
+                <% if customer_signed_in? %>
+                  <!--Customer ログイン後header-->
+                  <span class="navbar-text text-right mr-3">ようこそ、<%= current_customer.full_name %>さん</span>
+                  <li><%= link_to "マイページ", customers_path,                class: 'nav-link text-right' %></li>
+                  <li><%= link_to "商品一覧",   items_path,                    class: 'nav-link text-right' %></li>
+                  <li><%= link_to "カート",     cart_items_path,               class: 'nav-link text-right' %></li>
+                  <li><%= link_to "ログアウト", destroy_customer_session_path, class: 'nav-link text-right', method: :delete %></li>
+                <% elsif admin_signed_in? %>
+                  <!--Admin ログイン後header-->
+                  <li><%= link_to "商品一覧",     admin_items_path,            class: 'nav-link text-right' %></li>
+                  <li><%= link_to "会員一覧",     admin_customers_path,        class: 'nav-link text-right' %></li>
+                  <li><%= link_to "注文履歴一覧", admin_path,                  class: 'nav-link text-right' %></li>
+                  <li><%= link_to "ジャンル一覧", admin_genres_path,           class: 'nav-link text-right' %></li>
+                  <li><%= link_to "ログアウト",   destroy_admin_session_path,  class: 'nav-link text-right', method: :delete %></li>
+                <% else %>
+                  <!--共通ログイン前 header-->
+                  <li><%= link_to "About",    about_path,                      class: 'nav-link text-right' %></li>
+                  <li><%= link_to "商品一覧", items_path,                      class: 'nav-link text-right' %></li>
+                  <li><%= link_to "新規登録", new_customer_registration_path,  class: 'nav-link text-right' %></li>
+                  <li><%= link_to "ログイン", new_customer_session_path,       class: 'nav-link text-right' %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+          <div class="row mt-2 w-100 justify-content-end">
+            <%= form_with url: items_path, method: :get, local: true, class: "form-inline search_container" do |f| %>
+              <%= f.text_field :search, placeholder: "Search", class: "form-control"%>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

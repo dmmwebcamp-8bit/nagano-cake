@@ -1,0 +1,39 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-10 mx-auto">
+
+      <h5 class="mb-5"><span class="title-custom px-4">注文履歴一覧</span></h5>
+
+      <table class="table table-colored">
+        <thead>
+          <tr>
+            <th>購入日時</th>
+            <th>購入者</th>
+            <th>注文個数</th>
+            <th>注文ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+          <tr>
+            <td>
+              <%= link_to admin_order_path(order), class: "text-reset" do %>
+                <u><%= l order.created_at %></u>
+              <% end %>
+            </td>
+            <td><%= order.customer.full_name %></td>
+            <td><%= order.order_details.sum(:quantity) %></td>
+            <td><%= order.status_i18n %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <!--ページネーション-->
+      <div class="d-flex justify-content-center">
+        <%= paginate @orders, theme: 'bootstrap-5' %>
+      </div>
+
+    </div>
+  </div>
+</div>

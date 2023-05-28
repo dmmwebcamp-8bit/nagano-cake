@@ -1,0 +1,29 @@
+header{
+  background-color: #d9b2b0;
+
+  .search_container{
+    box-sizing: border-box;
+  }
+  .search_container input[type="text"]{
+    background: #9e9e9e;
+    opacity: 0.5;
+    border: none;
+    height: 35px;
+  }
+  .search_container input[type="text"]:focus {
+    outline: 0;
+  }
+
+  .navbar-toggler{
+    background-color: #c7959f;
+  }
+
+  li{
+    a{
+      color: #9e9e9e;
+    }
+    a:hover{
+      color: #9c7ea6;
+    }
+  }
+}

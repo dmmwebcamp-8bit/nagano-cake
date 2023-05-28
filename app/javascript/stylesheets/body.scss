@@ -1,0 +1,33 @@
+body{
+  background-color: #e6e2d1;
+  font-family: 'Shippori Mincho B1', serif;
+}
+
+// ボタン配色
+.btn {
+  padding: 5px;
+  color: #fff;
+  text-align: center;
+  border: none;
+  &:hover {
+    opacity: .6;
+    color: #fff;
+  }
+  &:active {
+    opacity: .6;
+    color: #fff;
+  }
+}
+.btn-attention {
+  background: #C7959F;
+}
+.btn-green {
+  background: #95C7BD;
+}
+.btn-usually {
+  background: #D9B2B0;
+}
+.btn-point {
+  background: #9C7EA6;
+}
+

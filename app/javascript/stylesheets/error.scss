@@ -1,0 +1,17 @@
+.field_with_errors {
+  background-color: #f08080;
+  padding: 2px;
+}
+
+#flash {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 99999;
+  .alert-success {
+   background-color: rgba(149, 199, 189, 0.3);
+  }
+  .alert-danger {
+   background-color: rgba(232, 81, 81, 0.3);
+  }
+}

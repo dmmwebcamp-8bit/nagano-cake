@@ -1,0 +1,51 @@
+<div class="container my-5">
+  <div class="row">
+
+    <div class="col-7">
+
+      <!--エラーメッセージ-->
+      <%= render 'layouts/errors', obj: @genre %>
+
+      <h5 class="ml-5 mb-3"><span class="title-custom px-4">ジャンル一覧・追加</span></h5>
+
+      <!--ジャンル新規登録欄-->
+      <%= form_with model: @genre, url: admin_genres_path do |f| %>
+        <table class="table table-borderless my-5">
+          <tr>
+            <td class="align-middle">ジャンル名</td>
+            <td><%= f.text_field :name, placeholder: "ジャンル名", class:"form-control" %></td>
+            <td><%= f.submit "新規登録", class:"btn btn-block btn-usually font-weight-bold ml-3" %></td>
+          </tr>
+        </table>
+      <% end %>
+
+        <!--ジャンル一覧-->
+        <div class="col-11">
+          <table class="table table-colored">
+            <thead>
+              <th class="text-center">ジャンル</th>
+              <th class="text-center">ステータス</th>
+              <th></th>
+            </thead>
+
+            <tbody>
+              <% @genres.each do |genre| %>
+                <tr>
+                  <td class="pl-4"><%= genre.name %></td>
+                  <td class="text-center">
+                    <% if genre.is_active %>
+                      <span style="color: green;">有効</span>
+                    <% else %>
+                      <span style="color: gray;" >無効</span>
+                    <% end %>
+                  </td>
+                  <td><%= link_to "編集する", edit_admin_genre_path(genre), class:"col-7 offset-3 btn btn-usually font-weignt-bold" %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+
+    </div>
+  </div>
+</div>
