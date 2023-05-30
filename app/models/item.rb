@@ -28,4 +28,12 @@ class Item < ApplicationRecord
       where(['name LIKE ?', "%#{search}%"]).or(where('description LIKE?', "%#{search}%"))
   end
 
+  def status
+    if is_active
+      ApplicationController.helpers.tag.span "販売中",     style: "color: green;"
+    else
+      ApplicationController.helpers.tag.span "販売停止中", style: "color: gray;"
+    end
+  end
+
 end

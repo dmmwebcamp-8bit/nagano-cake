@@ -13,7 +13,7 @@
         <table class="table table-borderless">
             <tr>
               <td>
-                <%= form_with model: @genre, url: admin_genres_path, html: { class: "form-inline" } do |f| %>
+                <%= form_with model: Genre.new, url: admin_genres_path, html: { class: "form-inline" } do |f| %>
                   <%= f.text_field :name, placeholder: "新規ジャンル名", class: "form-control mr-2", style: "width: 70%" %>
                   <%= f.submit "ジャンル作成", class:"btn btn-primary", style: "width: 25%" %><br>
                   <p class="text-white pt-3"> ※作成をやめる場合、以下より再度ジャンルをお選びください</p>
@@ -46,8 +46,10 @@
             <tr>
               <td>ジャンル</td>
               <td>
-                <%= f.select :genre_id, options_for_select([["新しくジャンルを作成する", "new"]].concat(@genres.map { |genre| [genre.name, genre.id] })),
-                  { include_blank: "-- 選択してください --" }, {required: true, class: "form-control", id: "genre-select" } %>
+                <%= f.select :genre_id,
+                    options_for_select([["新しくジャンルを作成する", "new"]].concat(Genre.all.map { |genre| [genre.name, genre.id] })),
+                    { include_blank: "-- 選択してください --" },
+                    {required: true, class: "form-control", id: "genre-select" } %>
               </td>
             </tr>
             <tr>
@@ -58,9 +60,9 @@
               <td>販売ステータス</td>
               <td>
                 <%= f.radio_button :is_active, true, checked: true %>
-                <%= label_tag :is_active_true, "販売中" %>
+                <%= f.label :is_active_true, "販売中" %>
                 <%= f.radio_button :is_active, false, class: "ml-3" %>
-                <%= label_tag :is_active_false, "販売停止中" %>
+                <%= f.label :is_active_false, "販売停止中" %>
               </td>
             </tr>
           </table>

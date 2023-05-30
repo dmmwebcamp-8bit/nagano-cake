@@ -6,8 +6,6 @@ class Admin::ItemsController < Admin::ApplicationController
 
   def new
     @item = Item.new
-    @genres = Genre.all
-    @genre = Genre.new
   end
 
   def create
@@ -15,7 +13,6 @@ class Admin::ItemsController < Admin::ApplicationController
     if @item.save
       redirect_to admin_item_path(@item.id)
     else
-      @genres = Genre.all
       render :new
     end
   end
@@ -26,7 +23,6 @@ class Admin::ItemsController < Admin::ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-    @genres = Genre.all
   end
 
   def update
@@ -34,7 +30,6 @@ class Admin::ItemsController < Admin::ApplicationController
     if @item.update(item_params)
       redirect_to admin_item_path(@item.id)
     else
-      @genres = Genre.all
       render :edit
     end
   end

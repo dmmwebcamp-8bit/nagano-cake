@@ -8,6 +8,10 @@ class OrderDetail < ApplicationRecord
                         process_in_making:2,
                         finished_making:3}
 
+  def key
+    OrderDetail.making_statuses[making_status]
+  end
+
   def sub_total
     price * quantity
   end
