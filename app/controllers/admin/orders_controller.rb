@@ -6,21 +6,23 @@ class Admin::OrdersController < Admin::ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    hash = params[:order][:status]
+    key = Order.statuses[params[:order][:status]]
 
-    if Order.statuses[@order.status] >= Order.statuses[hash]
-      flash[:notice] = "注文ステータスは変更できません。"
+    ### 実行前データ確認 ###
+    if @order.key >= key
+      flash.now[:danger] = "注文ステータスは変更できません。"
       render :show
-    else
-      @order.update(status: params[:order][:status])
-      flash[:notice]="注文ステータスを" + Order.statuses_i18n[@order.status] + "に変更しました。"
-
-      if Order.statuses[@order.status] == 1
-        @order.order_details.update_all(making_status: OrderDetail.making_statuses.key(1))
-        flash[:notice]+= "\n" + "製作ステータスを" + OrderDetail.making_statuses_i18n[OrderDetail.making_statuses.key(1)] + "に変更しました。"
-      end
-      redirect_to admin_order_path(@order.id)
+      return
     end
+
+    ### データ更新 ###
+    @order.update(status: key)
+    flash[:notice]="注文ステータスを" + @order.status_i18n + "に変更しました。"
+    if @order.key == 1
+      @order.order_details.update_all(making_status: 1)
+      flash[:notice] += "製作ステータスを" + OrderDetail.making_statuses_i18n.values[1] + "に変更しました。"
+    end
+    redirect_to admin_order_path(@order.id)
 
   end
 end

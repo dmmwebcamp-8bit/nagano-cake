@@ -6,48 +6,48 @@
 
       <!--編集リンク-->
       <div class="d-flex mb-3">
-        <h5 class="font-weight-bold mr-5 my-auto">登録情報</h5>
-        <%= link_to "編集する", customers_information_edit_path, class: "btn btn-usually px-4 font-weight-bold" %>
+        <h5 class="mr-5 my-auto">登録情報</h5>
+        <%= link_to "編集する", customers_information_edit_path, class: "btn btn-usually px-4" %>
       </div>
 
       <!--会員情報-->
-      <table class="table table-bordered mb-4">
+      <table class="table table-bordered table-colored-turn mb-4">
         <tr>
-          <td style="background-color:#d9d9d9;">氏名</td>
-          <td style="background-color:#ffffff;" width="75%"><%= current_customer.full_name %></td>
+          <td>氏名</td>
+          <td width="75%"><%= current_customer.full_name %></td>
         </tr>
         <tr>
-          <td style="background-color:#d9d9d9;">カナ</td>
-          <td style="background-color:#ffffff;"><%= current_customer.full_name_kana %></td>
+          <td>カナ</td>
+          <td><%= current_customer.full_name_kana %></td>
         </tr>
         <tr>
-          <td style="background-color:#d9d9d9;">郵便番号</td>
-          <td style="background-color:#ffffff;"><%= current_customer.postal_code %></td>
+          <td>郵便番号</td>
+          <td><%= current_customer.postal_code %></td>
         </tr>
         <tr>
-          <td style="background-color:#d9d9d9;">住所</td>
-          <td style="background-color:#ffffff;"><%= current_customer.address %></td>
+          <td>住所</td>
+          <td><%= current_customer.address %></td>
         </tr>
         <tr>
-          <td style="background-color:#d9d9d9;">電話番号</td>
-          <td style="background-color:#ffffff;"><%= current_customer.phone_number %></td>
+          <td>電話番号</td>
+          <td><%= current_customer.phone_number %></td>
         </tr>
         <tr>
-          <td style="background-color:#d9d9d9;">メールアドレス</td>
-          <td style="background-color:#ffffff;"><%= current_customer.email %></td>
+          <td>メールアドレス</td>
+          <td><%= current_customer.email %></td>
         </tr>
       </table>
 
       <!--配送先リンク-->
       <div class="d-flex mb-3">
-        <h5 class="font-weight-bold mr-5 my-auto">配送先&emsp;</h5>
-        <%= link_to "一覧を見る", addresses_path, class: "btn btn-attention px-4 font-weight-bold" %>
+        <h5 class="mr-5 my-auto">配送先&emsp;</h5>
+        <%= link_to "一覧を見る", addresses_path, class: "btn btn-attention px-4" %>
       </div>
 
       <!--注文履歴リンク-->
       <div class="d-flex">
-        <h5 class="font-weight-bold mr-5 my-auto">注文履歴</h5>
-        <%= link_to "一覧を見る", orders_path, class: "btn btn-attention px-4 font-weight-bold" %>
+        <h5 class="mr-5 my-auto">注文履歴</h5>
+        <%= link_to "一覧を見る", orders_path, class: "btn btn-attention px-4" %>
       </div>
 
     </div>

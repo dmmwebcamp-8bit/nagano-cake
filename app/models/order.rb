@@ -16,13 +16,4 @@ class Order < ApplicationRecord
     Order.statuses[status]
   end
 
-  ## 注文詳細の数量の合計を返す
-  def total_amount
-    amount = 0
-    order_details.each do |order_detail|
-      amount += order_detail.quantity
-    end
-    return amount
-  end
-
 end

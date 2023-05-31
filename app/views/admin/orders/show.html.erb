@@ -9,26 +9,26 @@
     <table class="table table-sm table-borderless">
       <tbody>
         <tr>
-          <td><b>購入者</b></td>
+          <th>購入者</th>
           <td><%= link_to @order.customer.full_name, admin_customer_path(@order.customer) %></td>
         </tr>
         <tr>
-          <td><b>注文日</b></td>
+          <th>注文日</th>
           <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
         </tr>
         <tr>
-          <td><b>配送先</b></td>
+          <th>配送先</th>
           <td><%= '〒' + @order.postal_code + ' ' + @order.address %><br><%= @order.name %></td>
         </tr>
         <tr>
-          <td><b>支払方法</b></td>
+          <th>支払方法</th>
           <td><%= Order.payment_methods_i18n[@order.payment_method] %></td>
         </tr>
         <tr>
-          <td><b>注文ステータス</b></td>
+          <th>注文ステータス</th>
           <td>
             <%= form_with model:[:admin,@order], class: "form-inline" do |f| %>
-              <%= f.select :status, Order.statuses.keys.map { |k| [t("enums.order.status.#{k}"), k] },{},{class: "form-control"} %>
+              <%= f.select :status, Order.statuses_i18n.invert,{},{class: "form-control"} %>
               <%= f.submit "更新", class: "ml-2 btn btn-usually" %>
             <% end %>
           </td>
@@ -61,7 +61,7 @@
               <td class="text-right"><%= order_detail.sub_total.to_s(:delimited) %></td>
               <td>
                 <%= form_with model: [:admin, @order, order_detail], class: "form-inline" do |f| %>
-                  <%= f.select :making_status ,OrderDetail.making_statuses.keys.map { |k| [t("enums.order_detail.making_status.#{k}"), k] },{},{class: "form-control"} %>
+                  <%= f.select :making_status ,OrderDetail.making_statuses_i18n.invert,{},{class: "form-control"} %>
                   <%= f.submit "更新", class: "btn btn-usually ml-2" %>
                 <% end %>
               </td>

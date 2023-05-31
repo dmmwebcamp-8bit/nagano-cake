@@ -2,17 +2,13 @@ class Public::AddressesController < Public::ApplicationController
 
   def index
     @address = Address.new
-    @customer = current_customer
-    @addresses = @customer.addresses
   end
 
   def create
-    @address = Address.new(address_params)
-    @address.customer_id = current_customer.id
+    @address = current_customer.addresses.new(address_params)
     if @address.save
       redirect_to request.referer
     else
-      @addresses = current_customer.addresses
       render :index
     end
   end

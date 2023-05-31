@@ -2,7 +2,7 @@
   <div class="row">
 
     <!--サイドバー部分-->
-    <%= render 'public/homes/sidebar', genres: @genres %>
+    <%= render 'public/homes/sidebar' %>
 
     <!--メイン部分-->
     <div class="col-9">
@@ -10,17 +10,15 @@
       <!--ジャンルで絞り込む時 else 全ての商品を見る時-->
       <% if params[:genre_id] %>
         <span class="h2 title-custom px-4"><%= @genre.name %>一覧</span>
-        (全<%= Item.where(genre_id: params[:genre_id], is_active: true).count %>件)
       <% elsif params[:search] %>
         <span class="h2 title-custom px-4">検索結果"<%=@keyword %>"</span>
-      　(全<%= @items_all.count  %>件)
       <% else %>
         <span class="h2 title-custom px-4">商品一覧</span>
-        (全<%= Item.where(is_active: true).count %>件)
       <% end %>
+      　(全<%= @items_all.count  %>件)
 
       <div class="items d-flex ml-3">
-        <% if @items.empty? %>
+        <% if @items_all.empty? %>
           <p class="mt-4">該当する商品はありません</p>
         <% else %>
           <!--１つの行に４商品を表示する-->
@@ -36,7 +34,7 @@
                     </div>
                   <% end %>
                   <div class="item-caption pl-2">
-                    <%= item.name %><br>¥<%= number_with_delimiter(item.with_tax_price) %>
+                    <%= item.name %><br>¥<%= item.with_tax_price.to_s(:delimited) %>
                   </div>
                 </div>
               </div>

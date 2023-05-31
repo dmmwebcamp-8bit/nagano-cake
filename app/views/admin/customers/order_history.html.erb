@@ -17,7 +17,7 @@
             <tbody>
               <% @orders.each do |order| %>
               <tr>
-                <td><%= link_to l order.created_at, admin_order_path(order) %></td>
+                <td><%= link_to (l order.created_at), admin_order_path(order) %></td>
                 <td><%= order.order_details.sum(:quantity) %></td>
                 <td><%= order.status_i18n %></td>
               </tr>

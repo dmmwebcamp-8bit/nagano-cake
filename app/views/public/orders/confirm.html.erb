@@ -18,7 +18,7 @@
             <th width=15%>小計</th>
           </thead>
           <tbody>
-            <% @cart_items.each do |cart_item|%>
+            <% current_customer.cart_items.each do |cart_item|%>
               <tr>
                 <td><%= image_tag cart_item.item.get_image(80,40) %></td>
                 <td><%= cart_item.item.name %></td>
@@ -69,7 +69,7 @@
   </div>
 
   <div class="row justify-content-center">
-    <%= form_with model: @order do |f| %>
+    <%= form_with model: Order.new do |f| %>
       <%= f.hidden_field :payment_method, :value => @payment_method %>
       <%= f.hidden_field :total_cost,     :value => (@shipping_cost + @total) %>
       <%= f.hidden_field :shipping_cost,  :value => @shipping_cost %>

@@ -4,7 +4,7 @@
   <div class="row">
 
     <!--サイドバー部分-->
-    <%= render 'sidebar', genres: @genres %>
+    <%= render 'sidebar' %>
 
     <!--メイン部分-->
     <div class="col-9">
@@ -12,9 +12,7 @@
       <%= render 'slick' %>
 
       <!--インフォメーション-->
-      <% unless customer_signed_in? %>
-        <%= render 'information' %>
-      <% end %>
+      <%= render 'information' unless customer_signed_in? %>
 
       <!--商品群-->
       <div class="h2 mt-4"><span class="title-custom px-4">新着商品</span></div>
