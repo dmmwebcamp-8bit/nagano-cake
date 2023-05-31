@@ -12,39 +12,33 @@
 
         <!--商品詳細-->
         <div class="col-7">
-          <table class="table table-borderless">
+          <table class="table table-borderless table-item">
             <tr>
               <td>商品名</td>
-              <td class="h5"><%= @item.name %></td>
+              <td><%= @item.name %></td>
             </tr>
             <tr>
               <td>商品説明</td>
-              <td class="h5"><%= @item.description %></td>
+              <td><%= @item.description %></td>
             </tr>
             <tr>
               <td>ジャンル</td>
-              <td class="h5"><%= @item.genre.name %></td>
+              <td><%= @item.genre.name %></td>
             </tr>
             <tr>
               <td>税込価格<br>(税抜価格)</td>
-              <td class="h5 align-middle"><%= number_with_delimiter(@item.with_tax_price) %>（<%= number_with_delimiter(@item.price) %>）円</td>
+              <td><%= @item.with_tax_price.to_s(:delimited) %>（<%= @item.price.to_s(:delimited) %>）円</td>
             </tr>
             <tr>
               <td>販売ステータス</td>
-              <td class="h5">
-                <% if @item.is_active %>
-                  <span style="color: green;">販売中</span>
-                <% else %>
-                  <span style="color: gray;">販売停止中</span>
-                <% end %>
-              </td>
+              <td class="h5"><%= @item.status %></td>
             </tr>
           </table>
         </div>
 
         <!--編集ページ遷移ボタン-->
         <div class="mx-auto mt-5">
-          <%= link_to "編集する", edit_admin_item_path(@item.id), class:"btn btn-usually btn-lg" %>
+          <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-usually btn-lg" %>
         </div>
       </div>
 

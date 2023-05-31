@@ -8,13 +8,8 @@ class Admin::GenresController < Admin::ApplicationController
   def create
     @genre = Genre.new(genre_params)
     if @genre.save
-      if request.referer == new_admin_item_url
-        flash[:notice] = "ジャンルの作成に成功しました"
-        redirect_to request.referer
-      else
-        flash[:notice] = "ジャンルの作成に成功しました"
-        redirect_to admin_genres_path
-      end
+      flash[:notice] = "ジャンルの作成に成功しました"
+      redirect_to request.referer
     else
       @genres = Genre.all
       render :index
@@ -30,6 +25,8 @@ class Admin::GenresController < Admin::ApplicationController
     if @genre.update(genre_params)
       flash[:notice] = "ジャンル情報の変更に成功しました"
       redirect_to admin_genres_path
+      # ジャンル無効化時に所属商品も無効化
+      @genre.items.update_all(is_active: false) unless @genre.is_active
     else
       render :edit
     end

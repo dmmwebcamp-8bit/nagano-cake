@@ -20,19 +20,9 @@
               <% @customers.each do |customer| %>
                 <tr>
                   <td><%= customer.id %></td>
-                  <td>
-                    <%= link_to admin_customer_path(customer.id), class: "text-reset" do %>
-                      <u><%= customer.full_name %></u>
-                    <% end %>
-                  </td>
+                  <td><%= link_to customer.full_name, admin_customer_path(customer.id) %></td>
                   <td><%= customer.email %></td>
-                  <td>
-                    <% if customer.is_deleated %>
-                      <span class="font-weight-bold pl-3 text-secondary">退会</span>
-                    <% else %>
-                      <span class="font-weight-bold pl-3 text-success"  >有効</span>
-                    <% end %>
-                  </td>
+                  <td><%= customer.status %></td>
                 </tr>
               <% end %>
             </tbody>

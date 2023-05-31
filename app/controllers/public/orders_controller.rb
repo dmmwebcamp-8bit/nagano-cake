@@ -5,8 +5,6 @@ class Public::OrdersController < Public::ApplicationController
   end
 
   def confirm
-    @order = Order.new
-    @cart_items = current_customer.cart_items
     @payment_method = params[:payment_method]
     @total = 0
     @shipping_cost = 800
@@ -16,26 +14,28 @@ class Public::OrdersController < Public::ApplicationController
       @address = current_customer.address
       @name = current_customer.full_name
     when "2"
-      # 選択チェック
+      ### 選択チェック ###
       unless params[:address_id].present?
         flash.now[:danger] = "住所を選択してください。"
         render :new
-      else
-        address = Address.find(params[:address_id])
-        @postal_code = address.postal_code
-        @address = address.address
-        @name = address.name
+        return
       end
+
+      address = Address.find(params[:address_id])
+      @postal_code = address.postal_code
+      @address = address.address
+      @name = address.name
     else
-      # 入力チェック
+      ### 入力チェック ###
       if params[:postal_code]=="" || params[:address]=="" || params[:name]==""
         flash.now[:danger] = "お届け先郵便番号・住所・宛名を入力してください。"
         render :new
-      else
-        @postal_code = params[:postal_code]
-        @address = params[:address]
-        @name = params[:name]
+        return
       end
+
+      @postal_code = params[:postal_code]
+      @address = params[:address]
+      @name = params[:name]
     end
   end
 

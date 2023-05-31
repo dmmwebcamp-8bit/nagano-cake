@@ -29,7 +29,7 @@
             </tr>
             <tr>
               <td>ジャンル</td>
-              <td><%= f.collection_select :genre_id, @genres, :id, :name, { prompt: "-- 選択してください --" }, {required: true, class: "form-control"} %></td>
+              <td><%= f.collection_select :genre_id, Genre.all, :id, :name, { prompt: "-- 選択してください --" }, {required: true, class: "form-control"} %></td>
             </tr>
             <tr>
               <td>税抜価格</td>
@@ -39,9 +39,9 @@
               <td>販売ステータス</td>
               <td>
                 <%= f.radio_button :is_active, true, checked: true %>
-                <%= label_tag :is_active_true, "販売中" %>
+                <%= f.label :is_active_true, "販売中" %>
                 <%= f.radio_button :is_active, false, class: "ml-3" %>
-                <%= label_tag :is_active_false, "販売停止中" %>
+                <%= f.label :is_active_false, "販売停止中" %>
               </td>
             </tr>
           </table>

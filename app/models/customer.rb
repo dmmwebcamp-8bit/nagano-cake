@@ -37,4 +37,12 @@ class Customer < ApplicationRecord
     '〒' + postal_code + ' ' + address
   end
 
+  def status
+    if is_deleated
+      ApplicationController.helpers.tag.span "退会", class: "font-weight-bold text-secondary"
+    else
+      ApplicationController.helpers.tag.span "有効", class: "font-weight-bold text-success"
+    end
+  end
+
 end

@@ -19,9 +19,9 @@
             <td>ステータス</td>
               <td>
                 <%= f.radio_button :is_active, true, checked: true %>
-                <%= label_tag :is_active_true, "有効" %>
+                <%= f.label :is_active_true, "有効" %>
                 <%= f.radio_button :is_active, false, class: "ml-3" %>
-                <%= label_tag :is_active_false, "無効" %>
+                <%= f.label :is_active_false, "無効" %>
               </td>
             </tr>
             <td><%= f.submit "変更を保存", class:"btn btn-block btn-usually font-weight-bold ml-3" %></td>

@@ -35,13 +35,7 @@
               <th><%= link_to item.name, admin_item_path(item) %></th>
               <th><%= number_with_delimiter(item.price) %></th>
               <th><%= item.genre.name %></th>
-              <th>
-                <% if item.is_active %>
-                  <span style="color: green;">販売中</span>
-                <% else %>
-                  <span style="color: gray;" >販売停止中</span>
-                <% end %>
-              </th>
+              <th><%= item.status %></th>
             </tr>
           </tbody>
         <% end %>

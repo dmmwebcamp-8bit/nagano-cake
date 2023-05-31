@@ -2,7 +2,7 @@
   <div class="row">
 
     <!--サイドバー部分-->
-    <%= render 'public/homes/sidebar', genres: @genres %>
+    <%= render 'public/homes/sidebar' %>
 
     <!--メイン部分-->
     <div class="col-9">
@@ -12,11 +12,11 @@
         </div>
         <!--商品情報-->
         <div class="col-7 form-group">
-          <%= form_with model: @cart_item, url: cart_items_path do |f| %>
+          <%= form_with model: CartItem.new, url: cart_items_path do |f| %>
             <div class="h2 font-weight-bold"><%= @item.name %></div>
             <div class="h5 mt-3"><%= @item.description %></div>
             <div class="mt-5">
-              <span class="h3">¥ <%= number_with_delimiter(@item.with_tax_price) %></span>
+              <span class="h3">¥ <%= @item.with_tax_price.to_s(:delimited) %></span>
               （税込）
             </div>
             <div class="row mt-4">
